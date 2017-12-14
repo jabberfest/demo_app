@@ -17,6 +17,17 @@ defmodule Demo.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    get "/app", AppController, :index
+
+  end
+
+  scope "/auth", Demo do
+    pipe_through [:browser]
+
+    get "/:provider", AuthController, :request
+    get "/:provider/callback", AuthController, :callback
+    post "/:provider/callback", AuthController, :callback
+    delete "/logout", AuthController, :delete  
   end
 
   # Other scopes may use custom stacks.
