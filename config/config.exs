@@ -31,7 +31,9 @@ config :logger, :console,
 
 config :ueberauth, Ueberauth,
   providers: [
-    facebook: { Ueberauth.Strategy.Facebook, [] }
+    facebook: { Ueberauth.Strategy.Facebook, [
+    display: "popup"
+    ]}
   ]
 
 config :ueberauth, Ueberauth.Strategy.Facebook.OAuth,
