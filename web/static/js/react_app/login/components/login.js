@@ -7,7 +7,7 @@ class Login extends React.Component{
     constructor(){
         super();
         this.state ={
-            txt: "this is the state text"
+            txt: "this is the state text change"
         }
     }
     update(e){
@@ -27,8 +27,7 @@ class Login extends React.Component{
 
 
 Login.propTypes = {
-    txt: PropTypes.string,
-    cat: PropTypes.number.isRequired
+    txt: PropTypes.string
 }
 
 Login.defaultProps = {
