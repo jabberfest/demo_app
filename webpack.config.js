@@ -6,6 +6,7 @@ module.exports = {
       path: path.join(__dirname, "/priv/static/js"),
       filename: "app.js"
     },
+    devtool: 'source-map',
     module: {
         rules: [
             {
