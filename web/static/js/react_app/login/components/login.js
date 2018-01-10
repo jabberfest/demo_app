@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
+import style from 'css/react_app/login/login.scss';
+
 
 class Login extends React.Component{
     constructor(){
