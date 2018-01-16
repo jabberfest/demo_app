@@ -47,7 +47,8 @@ module.exports = {
   },
   resolve: {
     alias: {
-      css: path.resolve(__dirname, './web/static/css')
+      css: path.resolve(__dirname, './web/static/css'),
+      js: path.resolve(__dirname, './web/static/js')
     }
   }
 };

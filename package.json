@@ -9,11 +9,12 @@
     "babel-preset-react": "6.24.1",
     "phoenix": "file:deps/phoenix",
     "phoenix_html": "file:deps/phoenix_html",
+    "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "prop-types": "^15.6.0",
-    "redux": "^3.7.2",
-    "react-redux": "^5.0.6"
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2"
   },
   "devDependencies": {
     "autoprefixer": "^7.2.4",

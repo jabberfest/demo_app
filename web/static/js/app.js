@@ -20,5 +20,5 @@ import "phoenix_html"
 
 // import socket from "./socket"
 
-
+import style from 'css/app.scss';
 import Login from './react_app/index';

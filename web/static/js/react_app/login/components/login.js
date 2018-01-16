@@ -2,15 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
+import Modal from 'js/react_app/components/modal'
+
 import style from 'css/react_app/login/login.scss';
+
 
 
 class Login extends React.Component{
     constructor(){
         super();
-        this.state ={
-            txt: "this is the state text change"
-        }
     }
     update(e){
         this.setState({txt: e.target.value})
@@ -18,12 +18,29 @@ class Login extends React.Component{
     render(){
         return (
             <div>
-                <h1>Prop: {this.props.txt}</h1>
-                <h2>State: {this.state.txt}</h2>
-                <Widget update={this.update.bind(this)}/>
-                <Button>I <Heart /> React</Button>
+                <Modal> 
+                    <div className="modal-component">
+                        <div className="form-group">
+                            <label htmlFor="exampleInputEmail1">Email address</label>
+                            <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+                            <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="exampleInputPassword1">Password</label>
+                            <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
+                        </div>
+
+                        <div className="text-center">
+                            <button type="button" className="btn btn-primary" onClick={this.handleFacebookClick}>Login with Facebook</button>
+                        </div>
+                    </div>
+                </Modal>
             </div>
         )
+    }
+    handleFacebookClick(){
+        window.location="/auth/facebook";
     }
 }
 

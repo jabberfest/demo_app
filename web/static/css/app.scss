@@ -1,2 +1,9 @@
 /* This file is for your main application css. */
+@import "node_modules/bootstrap/scss/bootstrap";
 
+$page-color: #323440;
+
+
+body{
+    background-color: $page-color;
+}
