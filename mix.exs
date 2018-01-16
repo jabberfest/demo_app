@@ -39,8 +39,8 @@ defmodule Demo.Mixfile do
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
      {:ueberauth, "~> 0.4" },
-     {:ueberauth_facebook, "~> 0.5"}]
-     #{:guardian, "~> 1.0"}]
+     {:ueberauth_facebook, "~> 0.5"},
+     {:guardian, "~> 1.0"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

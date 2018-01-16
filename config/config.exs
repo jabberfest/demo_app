@@ -12,7 +12,7 @@ config :demo,
 # Configures the endpoint
 config :demo, Demo.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "XajXE+1XyNmn1mf6DhPSbHwzb7HQPBQAZ31jG4/mO/ot1BaBegZplJgPcz0uSsnA",
+  secret_key_base: System.get_env("ENDPOINT_SECRET"),
   render_errors: [view: Demo.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Demo.PubSub,
            adapter: Phoenix.PubSub.PG2]
@@ -22,10 +22,10 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
-# # Configures Guardian Auth
-# config :demo, Demo.Guardian,
-#   issuer: "demo",
-#   secret_key: "1V7iQqWoOD+6WfzWfqrC7Fk/I+FW6D2w/LSeZZ/nCoemIpTcIRq/l9psUBMawZR+"
+# Configures Guardian Auth
+config :demo, Demo.Guardian,
+  issuer: "demo",
+  secret_key: System.get_env("GUARDIAN_SECRET")
 
 # Configures UberAuth
 
