@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import Modal from 'js/react_app/components/modal'
 
-import style from 'css/react_app/login/login.scss';
+import 'css/react_app/login/login.scss';
 
 
 

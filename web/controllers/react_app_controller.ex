@@ -7,7 +7,7 @@ defmodule Demo.ReactAppController do
 
     def index(conn, _params) do
 
-        IEx.pry
+        #IEx.pry
 
         render conn, "index.html", current_user: get_session(conn, :current_user)
     end

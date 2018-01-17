@@ -5,4 +5,4 @@ defmodule Demo.AuthErrorHandler do
         conn
         |> redirect(to: "/login")
     end
-  end
+end

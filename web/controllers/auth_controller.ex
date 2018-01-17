@@ -33,13 +33,13 @@ defmodule Demo.AuthController do
 
       case UserFromAuth.find_or_create(auth) do
         {:ok, user} ->
-          IEx.pry
+          #IEx.pry
 
           conn
           |> put_flash(:info, "Successfully authenticated.")
           |> put_session(:current_user, user)
           |> Demo.Guardian.Plug.sign_in(user)
-          |> redirect(to: "/react_app")
+          |> redirect(to: "/")
         {:error, reason} ->
           conn
           |> put_flash(:error, reason)

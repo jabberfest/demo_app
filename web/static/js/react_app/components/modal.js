@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
-import style from 'css/react_app/components/modal.scss'
+import 'css/react_app/components/modal.scss'
 
 class Modal extends React.Component{
     constructor(){

@@ -1,4 +1,5 @@
 var path = require('path');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   entry: "./web/static/js/app.js",
@@ -21,30 +22,35 @@ module.exports = {
               },
               {
                 test: /\.scss$/,
-                use: [
-                  {
-                    loader: 'style-loader' // inject CSS to page
-                  }, 
-                  {
-                    loader: 'css-loader' // translates CSS into CommonJS modules
-                  },
-                  {
-                    loader: 'postcss-loader', // Run post css actions
-                    options: {
-                      plugins: function () { // post css plugins, can be exported to postcss.config.js
-                        return [
-                          require('precss'),
-                          require('autoprefixer')
-                        ];
+                use: ExtractTextPlugin.extract({
+                  fallback: 'style-loader', 
+                  use: [
+                    {
+                      loader: 'css-loader' // translates CSS into CommonJS modules
+                    },
+                    {
+                      loader: 'postcss-loader', // Run post css actions
+                      options: {
+                        plugins: function () { // post css plugins, can be exported to postcss.config.js
+                          return [
+                            require('precss'),
+                            require('autoprefixer')
+                          ];
+                        }
                       }
+                    },{
+                      loader: 'sass-loader' // compiles Sass to CSS
                     }
-                  },{
-                    loader: 'sass-loader' // compiles Sass to CSS
-                  }
-                ]
+                  ]
+                }) 
               }
       ]
   },
+  plugins: [
+    new ExtractTextPlugin({
+      filename: '../css/[name].css'
+    })
+  ],
   resolve: {
     alias: {
       css: path.resolve(__dirname, './web/static/css'),

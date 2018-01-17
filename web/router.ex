@@ -16,7 +16,7 @@ defmodule Demo.Router do
   scope "/", Demo do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/", ReactAppController, :index
     get "/app", AppController, :index
     get "/login", LoginController, :index
     get "/react_app", ReactAppController, :index
