@@ -18,6 +18,7 @@ defmodule Demo.Router do
 
     get "/", PageController, :index
     get "/app", AppController, :index
+    get "/login", LoginController, :index
     get "/react_app", ReactAppController, :index
     get "/react_app/*glob", ReactAppController, :index
 

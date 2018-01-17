@@ -1,3 +1,5 @@
+require IEx;
+
 defmodule Demo.AuthController do
     @moduledoc """
     Auth controller responsible for handling Ueberauth responses
@@ -20,17 +22,23 @@ defmodule Demo.AuthController do
     end
   
     def callback(%{assigns: %{ueberauth_failure: _fails}} = conn, _params) do
+      #IEx.pry
+
       conn
       |> put_flash(:error, "Failed to authenticate.")
       |> redirect(to: "/")
     end
   
     def callback(%{assigns: %{ueberauth_auth: auth}} = conn, _params) do
+
       case UserFromAuth.find_or_create(auth) do
         {:ok, user} ->
+          IEx.pry
+
           conn
           |> put_flash(:info, "Successfully authenticated.")
           |> put_session(:current_user, user)
+          |> Demo.Guardian.Plug.sign_in(user)
           |> redirect(to: "/react_app")
         {:error, reason} ->
           conn
