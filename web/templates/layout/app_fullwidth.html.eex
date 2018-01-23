@@ -13,12 +13,10 @@
   </head>
 
   <body>
-    <div class="container">
+    <div>
       <main role="main">
         <%= render @view_module, @view_template, assigns %>
       </main>
-
-    </div> <!-- /container -->
-
+    </div>
   </body>
 </html>

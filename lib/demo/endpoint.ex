@@ -38,5 +38,6 @@ defmodule Demo.Endpoint do
     key: "_demo_key",
     signing_salt: "GJQkgsL/"
 
+  plug PhoenixGon.Pipeline
   plug Demo.Router
 end

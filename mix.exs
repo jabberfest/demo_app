@@ -30,7 +30,7 @@ defmodule Demo.Mixfile do
   #
   # Type `mix help deps` for examples and options.
   defp deps do
-    [{:phoenix, "~> 1.2.5"},
+    [{:phoenix, "~> 1.2.0"},
      {:phoenix_pubsub, "~> 1.0"},
      {:phoenix_ecto, "~> 3.0"},
      {:postgrex, ">= 0.0.0"},
@@ -40,7 +40,11 @@ defmodule Demo.Mixfile do
      {:cowboy, "~> 1.0"},
      {:ueberauth, "~> 0.4" },
      {:ueberauth_facebook, "~> 0.5"},
-     {:guardian, "~> 1.0"}]
+     {:guardian, "~> 1.0"},
+     #{:phoenix_gon, path: "/home/fernando/Elixir/phoenix_gon"},
+     {:phoenix_gon, "~> 0.2.0"},
+     {:poison, "2.2.0", override: true}
+    ]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
