@@ -4,30 +4,21 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 
-const mapStateToProps = (state) => {
-    return {
-        todos: []
-    };
-}
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onTodoClick:  (id) => {
-            dispatch({
-                type: 'TOGGLE_TODO'
-            })
-        }
-    };
-};
+import ChannelHeader from './channel_header';
+import ChannelItem from './channel_item';
+
+import * as channelActions from '../actions/channel'; 
 
 
-
-class LeftNavInner extends React.Component{
+class LeftNav extends React.Component{
     constructor(){
         super();
     }
 
     render(){
+        const { addChannel, ...rest } = this.props
+    
         return (
             <div className="left-container container">
             <div className="current-user-container row">
@@ -41,22 +32,13 @@ class LeftNavInner extends React.Component{
             </div>
 
             <div className="channel-container">
-                <div className="channel-title row">
-                    <div className="col-8">
-                        <span>Channels</span>
-                    </div>
-
-                    <div className="col-4 add-channel">
-                        <span>+</span>
-                    </div>
-
-                </div>
+                <ChannelHeader onAddChannelClick = { addChannel }/>
 
                 <div className="channel-list row">
                     <div className="col-12">
                         <ul>
-                            <li># Demo</li>
-                            <li># Elixir</li>
+                            <ChannelItem></ChannelItem>
+                            <ChannelItem></ChannelItem>
                         </ul>
                     </div>
                 </div>
@@ -68,18 +50,23 @@ class LeftNavInner extends React.Component{
 }
 
 
-LeftNavInner.propTypes = {
+LeftNav.propTypes = {
 }
 
-LeftNavInner.defaultProps = {
+LeftNav.defaultProps = {
+}
+
+const mapStateToProps = (state) => {
+    return {
+        todos: []
+    };
 }
 
 
-
-const LeftNav= connect(
+LeftNav= connect(
     mapStateToProps,
-    mapDispatchToProps
-)(LeftNavInner);
+    channelActions
+)(LeftNav);
 
 
 export default LeftNav

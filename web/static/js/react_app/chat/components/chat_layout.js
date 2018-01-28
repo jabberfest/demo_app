@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import 'css/react_app/chat_layout.scss';
 
 
-class ChatLayoutInner extends React.Component{
+class ChatLayout extends React.Component{
     constructor(){
         super();
     }
@@ -28,11 +28,11 @@ class ChatLayoutInner extends React.Component{
 }
 
 
-ChatLayoutInner.propTypes = {
+ChatLayout.propTypes = {
 
 }
 
-ChatLayoutInner.defaultProps = {
+ChatLayout.defaultProps = {
 
 }
 
@@ -54,9 +54,9 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 
-const ChatLayout = connect(
+ChatLayout = connect(
     mapStateToProps,
     mapDispatchToProps
-)(ChatLayoutInner);
+)(ChatLayout);
 
 export default ChatLayout

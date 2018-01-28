@@ -14,7 +14,7 @@ import 'css/react_app/components/modal.scss'
 
 //Reducers
 import current_user from './chat/reducers/user';
-import channels from './chat/reducers/channels';
+import channels from './chat/reducers/channel';
 
 
 
