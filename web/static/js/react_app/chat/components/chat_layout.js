@@ -5,9 +5,12 @@ import { connect } from 'react-redux';
 
 
 import LeftNav from './left_nav';
-import { getCurrentUser} from '../reducers/index';
+import { getCurrentUser, getAddChannelVisible} from '../reducers/index';
 
 import 'css/react_app/chat_layout.scss';
+import 'css/react_app/components/modal.scss';
+
+import { addChannel } from '../actions/channel';
 
 
 class ChatLayout extends React.Component{
@@ -16,14 +19,28 @@ class ChatLayout extends React.Component{
     }
 
     render(){
-        return (
-            <div className="chat-layout">
-                <LeftNav></LeftNav>
+        const { addChannelVisible } = this.props;
 
-                <div className="right-container">
-                    <div className="">Chat Area</div>
+        return (
+            <div>
+                { !addChannelVisible &&
+                <div className="chat-layout">
+                    <LeftNav></LeftNav>
+
+                    <div className="right-container">
+                        <div className="">Chat Channel</div>
+                    </div>
                 </div>
-            </div>
+                }
+
+                { addChannelVisible &&
+                   <div className="full-modal">
+                    <div className="content">
+                        asdasd
+                    </div>
+                   </div>
+                }
+           </div>
         )
     }
 
@@ -31,7 +48,8 @@ class ChatLayout extends React.Component{
 
 
 ChatLayout.propTypes = {
-    current_user: PropTypes.object.isRequired
+    current_user: PropTypes.object.isRequired,
+    addChannelVisible: PropTypes.bool.isRequired
 }
 
 ChatLayout.defaultProps = {
@@ -41,7 +59,8 @@ ChatLayout.defaultProps = {
 
 const mapStateToProps = (state) => {
     return {
-        current_user: getCurrentUser(state)
+        current_user: getCurrentUser(state),
+        addChannelVisible: getAddChannelVisible(state)
     };
 }
 

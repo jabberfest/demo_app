@@ -1,8 +1,7 @@
 html, body, body > div, body > div > main, 
-main > #root, #root > .chat-layout {
+main > #root, #root > div, #root > div > .chat-layout  {
     height: 100%;
 }
-
 
 .chat-layout{
     display: table;
@@ -38,7 +37,12 @@ main > #root, #root > .chat-layout {
 
             .channel-title{
                 .add-channel{
-                    text-align: right;
+                    text-align: center;
+                    font-weight: bolder;
+
+                    &:hover{
+                        background-color: #3b5998;;
+                    }
                 }
             }
 

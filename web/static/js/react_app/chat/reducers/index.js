@@ -19,3 +19,7 @@ export default demoApp;
 export const getCurrentUser = (state) => {
     return fromUser.getUser(state.current_user);
 };
+
+export const getAddChannelVisible = (state) => {
+    return fromChannel.getAddChannelVisible(state.channels);
+}

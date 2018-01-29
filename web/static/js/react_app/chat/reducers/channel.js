@@ -1,13 +1,23 @@
+import { addChannel } from "../actions/channel";
+
 // Reducer
-const channels = (state = [1,2,3,4], action) => {
+const channels = (state = {
+    addChannelVisible: false 
+}, action) => {
     switch (action.type) {
         case 'ADD_CHANNEL':
-            debugger;
-            return state;
+            const nextState = {...state, addChannelVisible:true} 
+            return nextState;
         default:
             return state;
     }
 }
 
 
-export default channels
+export default channels;
+
+
+// Accessor helper function 
+export const getAddChannelVisible = (state) =>{
+    return state.addChannelVisible;
+}
