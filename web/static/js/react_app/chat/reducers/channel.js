@@ -1,5 +1,5 @@
 // Reducer
-const channels = (state = [], action) => {
+const channels = (state = [1,2,3,4], action) => {
     switch (action.type) {
         case 'ADD_CHANNEL':
             debugger;

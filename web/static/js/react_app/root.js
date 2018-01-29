@@ -9,23 +9,12 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { createStore, combineReducers } from 'redux';
 import { Provider, connect } from 'react-redux';
 
+import configureStore from './configureStore';
 
 import 'css/react_app/components/modal.scss'
 
-//Reducers
-import current_user from './chat/reducers/user';
-import channels from './chat/reducers/channel';
 
-
-
-// Combine Reducers
-const demoApp = combineReducers({
-    current_user: current_user,
-    channels: channels
-});
-
-
-const store = createStore(demoApp);
+const store = configureStore();
 
 ReactDOM.render(
     <Provider store={store} >

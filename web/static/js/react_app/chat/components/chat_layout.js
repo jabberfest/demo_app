@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
 
 import LeftNav from './left_nav';
-import { connect } from 'react-redux';
+import { getCurrentUser} from '../reducers/index';
 
 import 'css/react_app/chat_layout.scss';
 
@@ -29,7 +31,7 @@ class ChatLayout extends React.Component{
 
 
 ChatLayout.propTypes = {
-
+    current_user: PropTypes.object.isRequired
 }
 
 ChatLayout.defaultProps = {
@@ -39,7 +41,7 @@ ChatLayout.defaultProps = {
 
 const mapStateToProps = (state) => {
     return {
-        todos: []
+        current_user: getCurrentUser(state)
     };
 }
 
