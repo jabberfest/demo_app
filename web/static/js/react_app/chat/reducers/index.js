@@ -15,7 +15,7 @@ const demoApp = combineReducers({
 
 export default demoApp;
 
-// Acessor functions to access State tree
+// Selector functions to access State tree
 export const getCurrentUser = (state) => {
     return fromUser.getUser(state.current_user);
 };

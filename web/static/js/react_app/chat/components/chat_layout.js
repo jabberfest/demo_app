@@ -5,7 +5,11 @@ import { connect } from 'react-redux';
 
 
 import LeftNav from './left_nav';
+import Modal from './modal';
+import AddChannelForm from './add_channel_form';
 import { getCurrentUser, getAddChannelVisible} from '../reducers/index';
+
+import * as channelActions from '../actions/channel'; 
 
 import 'css/react_app/chat_layout.scss';
 import 'css/react_app/components/modal.scss';
@@ -19,7 +23,7 @@ class ChatLayout extends React.Component{
     }
 
     render(){
-        const { addChannelVisible } = this.props;
+        const { addChannelVisible, cancelAddChannel } = this.props;
 
         return (
             <div>
@@ -34,11 +38,9 @@ class ChatLayout extends React.Component{
                 }
 
                 { addChannelVisible &&
-                   <div className="full-modal">
-                    <div className="content">
-                        asdasd
-                    </div>
-                   </div>
+                    <Modal>
+                        <AddChannelForm onCancelClick = {cancelAddChannel}/>
+                    </Modal>
                 }
            </div>
         )
@@ -49,7 +51,8 @@ class ChatLayout extends React.Component{
 
 ChatLayout.propTypes = {
     current_user: PropTypes.object.isRequired,
-    addChannelVisible: PropTypes.bool.isRequired
+    addChannelVisible: PropTypes.bool.isRequired,
+    cancelAddChannel: PropTypes.func.isRequired
 }
 
 ChatLayout.defaultProps = {
@@ -64,20 +67,10 @@ const mapStateToProps = (state) => {
     };
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onTodoClick:  (id) => {
-            dispatch({
-                type: 'TOGGLE_TODO'
-            })
-        }
-    };
-};
-
 
 ChatLayout = connect(
     mapStateToProps,
-    mapDispatchToProps
+    channelActions
 )(ChatLayout);
 
 export default ChatLayout

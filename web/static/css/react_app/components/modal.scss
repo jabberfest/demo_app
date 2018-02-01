@@ -21,12 +21,18 @@ $modal-padding: 20px;
   overflow-x: hidden;
   overflow-y: hidden;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   display: flex;
   background-color: white;
+  
 
   .content{
     width: 640px;
     max-width: 100%;
   }
+
+  .small-right-margin{
+    margin-right: 4px;
+  }
+
 }

@@ -6,8 +6,9 @@ const channels = (state = {
 }, action) => {
     switch (action.type) {
         case 'ADD_CHANNEL':
-            const nextState = {...state, addChannelVisible:true} 
-            return nextState;
+            return {...state, addChannelVisible:true} 
+        case 'CANCEL_ADD_CHANNEL':
+            return {...state, addChannelVisible:false} 
         default:
             return state;
     }

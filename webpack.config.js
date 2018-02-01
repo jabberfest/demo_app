@@ -2,7 +2,7 @@ var path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
-  entry: "./web/static/js/app.js",
+  entry: ["whatwg-fetch","./web/static/js/app.js"],
   output: {
     path: path.join(__dirname, "/priv/static/js"),
     filename: "app.js"
