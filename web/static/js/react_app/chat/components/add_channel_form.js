@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
 
-const AddChannelForm = ({onCancelClick}) => (
+const AddChannelForm = ({onCancelClick, onCreateClick}) => (
     <div>
         <h1>Create a channel</h1>
 
@@ -16,14 +16,19 @@ const AddChannelForm = ({onCancelClick}) => (
         </div>
 
         <div className="text-right">
-            <button type="button" className="btn btn-secondary small-right-margin" onClick={onCancelClick}>Cancel</button>
-            <button type="button" className="btn btn-primary">Create</button>
+            <button type="button" className="btn btn-secondary small-right-margin" onClick={onCancelClick}>
+                Cancel
+            </button>
+            <button type="button" className="btn btn-primary" onClick={onCreateClick}>
+                Create
+            </button>
         </div>
     </div>
 )
 
 AddChannelForm.propTypes = {
-    onCancelClick: PropTypes.func.isRequired
+    onCancelClick: PropTypes.func.isRequired,
+    onCreateClick: PropTypes.func.isRequired
 };
         
 export default AddChannelForm;

@@ -22,6 +22,8 @@ defmodule Demo.Router do
     get "/react_app", ReactAppController, :index
     get "/react_app/*glob", ReactAppController, :index
 
+    resources "/channels", ChannelController, only: [:create]
+
   end
 
   scope "/auth", Demo do

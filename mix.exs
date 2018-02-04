@@ -6,7 +6,7 @@ defmodule Demo.Mixfile do
      version: "0.0.1",
      elixir: "~> 1.2",
      elixirc_paths: elixirc_paths(Mix.env),
-     compilers: [:phoenix, :gettext] ++ Mix.compilers,
+     compilers: [:phoenix, :gettext] ++ Mix.compilers ++ [:jsroutes],
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      aliases: aliases(),
@@ -41,9 +41,9 @@ defmodule Demo.Mixfile do
      {:ueberauth, "~> 0.4" },
      {:ueberauth_facebook, "~> 0.5"},
      {:guardian, "~> 1.0"},
-     #{:phoenix_gon, path: "/home/fernando/Elixir/phoenix_gon"},
-     {:phoenix_gon, "~> 0.2.0"},
-     {:poison, "2.2.0", override: true}
+     {:phoenix_gon, "~> 0.3.2"},
+     {:poison, "2.2.0", override: true},
+     {:phoenix_jsroutes, "~> 0.0.4"}
     ]
   end
 

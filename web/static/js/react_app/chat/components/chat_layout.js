@@ -9,7 +9,7 @@ import Modal from './modal';
 import AddChannelForm from './add_channel_form';
 import { getCurrentUser, getAddChannelVisible} from '../reducers/index';
 
-import * as channelActions from '../actions/channel'; 
+import * as channelActions from '../actions/channel';
 
 import 'css/react_app/chat_layout.scss';
 import 'css/react_app/components/modal.scss';
@@ -23,7 +23,11 @@ class ChatLayout extends React.Component{
     }
 
     render(){
-        const { addChannelVisible, cancelAddChannel } = this.props;
+        const {
+            addChannelVisible,
+            cancelAddChannel,
+            createAddChannel
+        } = this.props;
 
         return (
             <div>
@@ -39,7 +43,7 @@ class ChatLayout extends React.Component{
 
                 { addChannelVisible &&
                     <Modal>
-                        <AddChannelForm onCancelClick = {cancelAddChannel}/>
+                        <AddChannelForm onCancelClick = {cancelAddChannel} onCreateClick = {createAddChannel}/>
                     </Modal>
                 }
            </div>
