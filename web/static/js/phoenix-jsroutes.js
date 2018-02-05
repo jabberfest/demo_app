@@ -47,7 +47,7 @@
      }, 
      
      channelCreate: function channelCreate() {
-       return '/channels';
+       return '/api/channels';
      }, 
      
      authRequest: function authRequest(provider) {

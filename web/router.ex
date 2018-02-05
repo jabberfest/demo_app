@@ -11,6 +11,9 @@ defmodule Demo.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug :fetch_session
+    plug :protect_from_forgery
+    plug :put_secure_browser_headers
   end
 
   scope "/", Demo do
@@ -21,9 +24,12 @@ defmodule Demo.Router do
     get "/login", LoginController, :index
     get "/react_app", ReactAppController, :index
     get "/react_app/*glob", ReactAppController, :index
+  end
+
+  scope "/api", Demo do
+    pipe_through :api
 
     resources "/channels", ChannelController, only: [:create]
-
   end
 
   scope "/auth", Demo do

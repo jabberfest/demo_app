@@ -10,12 +10,16 @@ export const cancelAddChannel = () => ({
     type: 'CANCEL_ADD_CHANNEL'
 });
 
-export const createAddChannel = (text) => (dispatch) => 
+export const createAddChannel = (text) => (dispatch) => {
+    const data = {channel: {name: text}};
+
     fetch(routes.channelCreate(),{
         method: 'post',
         credentials: 'same-origin',
+        body: JSON.stringify(data),
         headers: new Headers({
-            'x-csrf-token': Gon.assets().csrf_token
+            'x-csrf-token': Gon.assets().csrf_token,
+            'Content-Type': 'application/json'
         })
     }).then(response =>{
         dispatch({
@@ -23,3 +27,4 @@ export const createAddChannel = (text) => (dispatch) =>
             response: normalize(response, schema.channel)
         });
     }); 
+}
