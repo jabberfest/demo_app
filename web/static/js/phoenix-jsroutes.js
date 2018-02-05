@@ -46,8 +46,44 @@
        return '/react_app/*glob';
      }, 
      
+     channelIndex: function channelIndex() {
+       return '/api/channels';
+     }, 
+     
+     channelShow: function channelShow(id) {
+       return '/api/channels/' + id;
+     }, 
+     
      channelCreate: function channelCreate() {
        return '/api/channels';
+     }, 
+     
+     channelMessageIndex: function channelMessageIndex() {
+       return '/api/channel_messages';
+     }, 
+     
+     channelMessageEdit: function channelMessageEdit(id) {
+       return '/api/channel_messages/' + id + '/edit';
+     }, 
+     
+     channelMessageNew: function channelMessageNew() {
+       return '/api/channel_messages/new';
+     }, 
+     
+     channelMessageShow: function channelMessageShow(id) {
+       return '/api/channel_messages/' + id;
+     }, 
+     
+     channelMessageCreate: function channelMessageCreate() {
+       return '/api/channel_messages';
+     }, 
+     
+     channelMessageUpdate: function channelMessageUpdate(id) {
+       return '/api/channel_messages/' + id;
+     }, 
+     
+     channelMessageDelete: function channelMessageDelete(id) {
+       return '/api/channel_messages/' + id;
      }, 
      
      authRequest: function authRequest(provider) {
