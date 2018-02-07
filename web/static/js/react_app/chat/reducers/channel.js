@@ -4,6 +4,8 @@ import { addChannel } from "../actions/channel";
 const channels = (state = {
     addChannelVisible: false 
 }, action) => {
+
+    debugger;
     switch (action.type) {
         case 'ADD_CHANNEL':
             return {...state, addChannelVisible:true} 
@@ -13,7 +15,6 @@ const channels = (state = {
             return state;
     }
 }
-
 
 export default channels;
 
