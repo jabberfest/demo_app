@@ -7,7 +7,7 @@ defmodule Demo.Repo.Migrations.AddChannelsTable do
       timestamps()
     end
 
-    create index(:channels, [:name])
+    create unique_index(:channels, [:name])
 
   end
 end

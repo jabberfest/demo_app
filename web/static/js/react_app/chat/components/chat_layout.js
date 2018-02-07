@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import LeftNav from './left_nav';
 import Modal from './modal';
 import AddChannelForm from './add_channel_form';
-import { getCurrentUser, getAddChannelVisible} from '../reducers/index';
+import { getCurrentUser, getModalVisible, getModalErrors} from '../reducers/index';
 
 import * as channelActions from '../actions/channel';
 
@@ -24,14 +24,15 @@ class ChatLayout extends React.Component{
 
     render(){
         const {
-            addChannelVisible,
+            modalVisible,
+            modalErrors,
             cancelAddChannel,
             createAddChannel
         } = this.props;
 
         return (
             <div>
-                { !addChannelVisible &&
+                { !modalVisible &&
                 <div className="chat-layout">
                     <LeftNav></LeftNav>
 
@@ -41,9 +42,13 @@ class ChatLayout extends React.Component{
                 </div>
                 }
 
-                { addChannelVisible &&
+                { modalVisible &&
                     <Modal>
-                        <AddChannelForm onCancelClick = {cancelAddChannel} onCreateClick = {createAddChannel}/>
+                        <AddChannelForm 
+                            onCancelClick = {cancelAddChannel} 
+                            onCreateClick = {createAddChannel}
+                            errors = {modalErrors}
+                        />
                     </Modal>
                 }
            </div>
@@ -55,7 +60,8 @@ class ChatLayout extends React.Component{
 
 ChatLayout.propTypes = {
     current_user: PropTypes.object.isRequired,
-    addChannelVisible: PropTypes.bool.isRequired,
+    modalVisible: PropTypes.bool.isRequired,
+    modalErrors: PropTypes.object.isRequired,
     cancelAddChannel: PropTypes.func.isRequired
 }
 
@@ -67,7 +73,8 @@ ChatLayout.defaultProps = {
 const mapStateToProps = (state) => {
     return {
         current_user: getCurrentUser(state),
-        addChannelVisible: getAddChannelVisible(state)
+        modalVisible: getModalVisible(state),
+        modalErrors: getModalErrors(state)
     };
 }
 

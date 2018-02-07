@@ -35,4 +35,29 @@ $modal-padding: 20px;
     margin-right: 4px;
   }
 
+  .form-group{
+    min-height: 140px;
+    margin-bottom: 8px;
+  }
+
+  input[type="text"] {
+    text-transform: lowercase;
+  }
+
+  ::-webkit-input-placeholder { /* WebKit browsers */
+    text-transform: none;
+  }
+  :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+      text-transform: none;
+  }
+  ::-moz-placeholder { /* Mozilla Firefox 19+ */
+      text-transform: none;
+  }
+  :-ms-input-placeholder { /* Internet Explorer 10+ */
+      text-transform: none;
+  }
+  ::placeholder { /* Recent browsers */
+      text-transform: none;
+  }
+
 }

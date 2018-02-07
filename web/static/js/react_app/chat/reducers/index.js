@@ -3,13 +3,15 @@ import { combineReducers } from 'redux';
 //Reducers
 import current_user, * as fromUser from '../reducers/user';
 import channels, * as fromChannel from '../reducers/channel';
+import modal, * as fromModal from '../reducers/modal';
 
 
 
 // Combine Reducers
 const demoApp = combineReducers({
     current_user: current_user,
-    channels: channels
+    channels: channels,
+    modal: modal
 });
 
 
@@ -20,6 +22,14 @@ export const getCurrentUser = (state) => {
     return fromUser.getUser(state.current_user);
 };
 
-export const getAddChannelVisible = (state) => {
-    return fromChannel.getAddChannelVisible(state.channels);
+export const getModalVisible = (state) => {
+    return fromModal.getModalVisible(state.modal);
+}
+
+export const getModalErrors = (state) => {
+    return fromModal.getModalErrors(state.modal);
+}
+
+export const getChannels = (state) => {
+    return fromChannel.getChannels(state.channels);
 }

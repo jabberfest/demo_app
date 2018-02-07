@@ -33,7 +33,7 @@ export const createAddChannel = (text) => (dispatch) => {
             debugger;
             dispatch({
                 type: 'ADD_CHANNEL_ERROR',
-                response: data
+                response: data.errors
             })
         })
     })

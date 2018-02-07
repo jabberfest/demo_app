@@ -1,10 +1,7 @@
 defmodule Demo.ChannelController do
     use Demo.Web, :controller
-
-
+    
     alias Demo.Channel
-
-    require IEx
     
     plug Demo.AuthAccessPipeline
 
