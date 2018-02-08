@@ -23,16 +23,37 @@ export const createAddChannel = (text) => (dispatch) => {
     }).then(api.handleErrors).then(response =>{
         return response.json()
     }).then(data => {
-        debugger;
         dispatch({
             type: 'ADD_CHANNEL_SUCCESS',
             response: data
         });
     }).catch(response => {
         response.json().then(data =>{
-            debugger;
             dispatch({
                 type: 'ADD_CHANNEL_ERROR',
+                response: data.errors
+            })
+        })
+    })
+}
+
+export const fetchChannels = () => (dispatch) => {
+     /**
+     * @todo Refactor into utility method in api
+     */
+    api.fetch(routes.channelIndex(),{
+        method: 'get'
+    }).then(api.handleErrors).then(response =>{
+        return response.json()
+    }).then(data => {
+        dispatch({
+            type: 'FETCH_CHANNELS_SUCCESS',
+            response: data.channels
+        });
+    }).catch(response => {
+        response.json().then(data =>{
+            dispatch({
+                type: 'FETCH_CHANNELS_ERROR',
                 response: data.errors
             })
         })

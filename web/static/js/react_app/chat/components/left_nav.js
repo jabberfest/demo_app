@@ -8,16 +8,28 @@ import { connect } from 'react-redux';
 import ChannelHeader from './channel_header';
 import ChannelItem from './channel_item';
 
-import * as channelActions from '../actions/channel'; 
+import * as channelActions from '../actions/channel';
+
+import { getChannels } from '../reducers/index';
 
 
 class LeftNav extends React.Component{
     constructor(){
         super();
     }
+    
+    componentDidMount() {
+        debugger;
+        this.fetchData();
+    }
+
+    fetchData() {
+        const { fetchChannels } = this.props
+        fetchChannels();
+    }
 
     render(){
-        const { addChannel, ...rest } = this.props
+        const { addChannel, channels } = this.props
     
         return (
             <div className="left-container container">
@@ -37,8 +49,7 @@ class LeftNav extends React.Component{
                 <div className="channel-list row">
                     <div className="col-12">
                         <ul>
-                            <ChannelItem></ChannelItem>
-                            <ChannelItem></ChannelItem>
+                            {channels.map((channel)=> <li key={channel.id}># {channel.name}</li>)}
                         </ul>
                     </div>
                 </div>
@@ -51,6 +62,7 @@ class LeftNav extends React.Component{
 
 
 LeftNav.propTypes = {
+    channel: PropTypes.array.isRequired
 }
 
 LeftNav.defaultProps = {
@@ -58,7 +70,7 @@ LeftNav.defaultProps = {
 
 const mapStateToProps = (state) => {
     return {
-        todos: []
+        channels: getChannels(state)
     };
 }
 

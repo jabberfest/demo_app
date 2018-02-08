@@ -32,7 +32,6 @@ class ChatLayout extends React.Component{
 
         return (
             <div>
-                { !modalVisible &&
                 <div className="chat-layout">
                     <LeftNav></LeftNav>
 
@@ -40,8 +39,7 @@ class ChatLayout extends React.Component{
                         <div className="">Chat Channel</div>
                     </div>
                 </div>
-                }
-
+                
                 { modalVisible &&
                     <Modal>
                         <AddChannelForm 

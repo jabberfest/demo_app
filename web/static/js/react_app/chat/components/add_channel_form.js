@@ -16,8 +16,6 @@ const AddChannelForm = ({onCancelClick, onCreateClick, errors}) => {
         onCreateClick(input.value)
     }
 
-    debugger;
-
     return (        
         <div>
             <h1>Create a channel</h1>
