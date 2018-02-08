@@ -59,3 +59,8 @@ export const fetchChannels = () => (dispatch) => {
         })
     })
 }
+
+export const selectChannel= (id, e) => ({
+    type: 'SELECT_CHANNEL',
+    response: id
+});

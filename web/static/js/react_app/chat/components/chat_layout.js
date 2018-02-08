@@ -36,7 +36,7 @@ class ChatLayout extends React.Component{
                     <LeftNav></LeftNav>
 
                     <div className="right-container">
-                        <div className="">Chat Channel</div>
+                        <div className="empty">Create a channel to join</div>
                     </div>
                 </div>
                 

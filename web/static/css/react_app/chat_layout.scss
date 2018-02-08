@@ -4,12 +4,11 @@ main > #root, #root > div, #root > div > .chat-layout  {
 }
 
 .chat-layout{
-    display: table;
     border-collapse: collapse;
     width: 100%;
+    display: flex;
 
     > div {
-        display: table-cell;
         border:  0px;
         margin: 0px;
     }
@@ -18,7 +17,7 @@ main > #root, #root > div, #root > div > .chat-layout  {
         width: 220px;
         min-width: 220px;
         background-color: #323440;
-
+        
         .current-user-container{
             margin-top:20px;
 
@@ -63,6 +62,9 @@ main > #root, #root > div, #root > div > .chat-layout  {
                         &:hover{
                             background-color:#3b5998;
                         }
+                        &.active{
+                            background-color: #3EB890;
+                        }
                     }
                 }
             }
@@ -92,6 +94,24 @@ main > #root, #root > div, #root > div > .chat-layout  {
 
     .right-container{
         background-color:white;
+
+        display: flex;  
+        align-items: center;
+        justify-content: center;
+        flex-grow: 1;
+
+        .empty{
+            overflow-y: hidden;
+            overflow-x: hidden;
+    
+            display: flex;  
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+
+            font-size: 2.5rem;
+            color: gainsboro;
+        }
     }
 
     .chat-area{

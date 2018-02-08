@@ -33,3 +33,7 @@ export const getModalErrors = (state) => {
 export const getChannels = (state) => {
     return fromChannel.getChannels(state.channels);
 }
+
+export const getActiveChannel = (state) => {
+    return fromChannel.getActiveChannel(state.channels);
+}

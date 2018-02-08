@@ -7,29 +7,23 @@ import { connect } from 'react-redux';
 import 'css/react_app/chat_layout.scss';
 
 
-class ChannelItem extends React.Component{
-    constructor(){
-        super();
+const ChannelItem = ({onClick, channel, activeChannel}) => {
+    const id = channel.id
+
+    const onClickHandler = (e) => {
+        onClick(id, e)
     }
 
-    render(){
-        return (
-            <li># Demo</li>
-        )
-    }
-
+    const active = activeChannel == id;
+    const classStr = active ? 'active' : '';
+        
+    return (<li className={classStr} onClick={onClickHandler}># {channel.name}</li>);
 }
-
 
 ChannelItem.propTypes = {
-
-}
-
-ChannelItem.defaultProps = {
-
-}
-
-
-
+    onClick: PropTypes.func.isRequired,
+    channel: PropTypes.object.isRequired
+};
+        
 
 export default ChannelItem

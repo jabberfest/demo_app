@@ -10,7 +10,7 @@ import ChannelItem from './channel_item';
 
 import * as channelActions from '../actions/channel';
 
-import { getChannels } from '../reducers/index';
+import { getChannels, getActiveChannel } from '../reducers/index';
 
 
 class LeftNav extends React.Component{
@@ -19,7 +19,6 @@ class LeftNav extends React.Component{
     }
     
     componentDidMount() {
-        debugger;
         this.fetchData();
     }
 
@@ -29,8 +28,13 @@ class LeftNav extends React.Component{
     }
 
     render(){
-        const { addChannel, channels } = this.props
-    
+        const { 
+                addChannel, 
+                selectChannel, 
+                channels,
+                activeChannel
+              } = this.props
+
         return (
             <div className="left-container container">
             <div className="current-user-container row">
@@ -49,7 +53,15 @@ class LeftNav extends React.Component{
                 <div className="channel-list row">
                     <div className="col-12">
                         <ul>
-                            {channels.map((channel)=> <li key={channel.id}># {channel.name}</li>)}
+                            {
+                                channels.map((channel)=> 
+                                    <ChannelItem 
+                                        key={channel.id} 
+                                        onClick={selectChannel} 
+                                        channel={channel}
+                                        activeChannel={activeChannel} 
+                                    />)
+                            }
                         </ul>
                     </div>
                 </div>
@@ -62,7 +74,7 @@ class LeftNav extends React.Component{
 
 
 LeftNav.propTypes = {
-    channel: PropTypes.array.isRequired
+    channels: PropTypes.array.isRequired
 }
 
 LeftNav.defaultProps = {
@@ -70,7 +82,8 @@ LeftNav.defaultProps = {
 
 const mapStateToProps = (state) => {
     return {
-        channels: getChannels(state)
+        channels: getChannels(state),
+        activeChannel: getActiveChannel(state)
     };
 }
 
