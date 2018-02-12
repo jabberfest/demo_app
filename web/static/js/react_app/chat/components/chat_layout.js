@@ -3,18 +3,21 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-
+// Views
 import LeftNav from './left_nav';
 import Modal from './modal';
 import AddChannelForm from './add_channel_form';
+import ChannelView from './channel_view';
+
+// Selectors
 import { getCurrentUser, getModalVisible, getModalErrors} from '../reducers/index';
 
-import * as channelActions from '../actions/channel';
+// Actions
+import addChannel , * as channelActions from '../actions/channel';
 
+//Styles
 import 'css/react_app/chat_layout.scss';
 import 'css/react_app/components/modal.scss';
-
-import { addChannel } from '../actions/channel';
 
 
 class ChatLayout extends React.Component{
@@ -36,7 +39,8 @@ class ChatLayout extends React.Component{
                     <LeftNav></LeftNav>
 
                     <div className="right-container">
-                        <div className="empty">Create a channel to join</div>
+                        { /* <div className="empty">Create a channel to join</div> */ }
+                        <ChannelView />
                     </div>
                 </div>
                 

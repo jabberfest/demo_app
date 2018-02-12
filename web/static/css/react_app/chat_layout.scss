@@ -94,11 +94,14 @@ main > #root, #root > div, #root > div > .chat-layout  {
 
     .right-container{
         background-color:white;
+        width: inherit;
 
-        display: flex;  
-        align-items: center;
-        justify-content: center;
-        flex-grow: 1;
+        &.empty{
+            display: flex;  
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+        }
 
         .empty{
             overflow-y: hidden;
