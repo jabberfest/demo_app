@@ -115,6 +115,32 @@ main > #root, #root > div, #root > div > .chat-layout  {
             font-size: 2.5rem;
             color: gainsboro;
         }
+
+        .chat-view{
+            display: flex;
+            height:100%;
+            flex-direction: column;
+
+
+            .header{
+                padding: 8px 0px;
+                border-bottom: 1px solid grey;
+            }
+
+            .chat-area{
+                display: flex;
+                flex-grow: 1;
+            }
+
+            .active-users{
+                width: 229px;
+                padding: 0px 8px;
+            }
+    
+            .chat-window{
+                flex-grow: 1;
+            }
+        }
     }
 
     .chat-area{

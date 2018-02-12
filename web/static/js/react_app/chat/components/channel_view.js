@@ -15,8 +15,22 @@ class ChatView extends React.Component{
         //const {} = this.props;
 
         return (
-            <div>
-                Foo
+            <div className="chat-view">
+                <div className="header">
+                    <div className="col"># demo</div>
+                </div>
+                
+                <div className="chat-area">
+                    <div className="chat-window col">
+                        text
+                    </div>
+
+                    <div className="active-users">
+                        RightNaV
+                    </div>
+                </div>
+
+
            </div>
         )
     }
