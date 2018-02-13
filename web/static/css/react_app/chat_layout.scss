@@ -1,3 +1,5 @@
+@import "node_modules/react-custom-scroll/dist/customScroll";
+
 html, body, body > div, body > div > main, 
 main > #root, #root > div, #root > div > .chat-layout  {
     height: 100%;
@@ -136,8 +138,9 @@ main > #root, #root > div, #root > div > .chat-layout  {
                     flex-direction: column;
 
                     .messages{
-                        flex-grow: 1;
-                        overflow-y: auto;
+                        flex: 1;
+                        min-height: 0;
+                        min-width: 0;
 
                         .message{
                             padding: 10px 0px;
@@ -147,10 +150,15 @@ main > #root, #root > div, #root > div > .chat-layout  {
                                 padding-right: 10px;
                             }
                         }
+
+                        .inner-handle{
+                            background-color: rgba(206,206,212,0.75);
+                        }
+
                     }
     
                     .message-input{
-                        height: 90px;
+                        height: 54px;
                     }
                 }
             }

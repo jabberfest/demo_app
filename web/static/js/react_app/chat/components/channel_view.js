@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-
 // Actions
 import * as channelActions from '../actions/channel';
 
@@ -13,6 +12,7 @@ import { getActiveChannel } from '../reducers/index';
 
 // Views
 import Message from './message';
+import CustomScroll from 'react-custom-scroll';
 
 class ChatView extends React.Component{
     constructor(){
@@ -31,16 +31,16 @@ class ChatView extends React.Component{
                 <div className="chat-area">
                     <div className="chat-window col">
                         <div className="messages row">
-                            <div className="col">
-
-                                <Message />
-                                <Message />
-                                <Message />
-                                <Message />
-                                <Message />
-                                <Message />
-
-                            </div>
+                            <CustomScroll heightRelativeToParent="calc(100% - 20px)">
+                                <div className="col">
+                                    <Message />
+                                    <Message />
+                                    <Message />
+                                    <Message />
+                                    <Message />
+                                    <Message />
+                                </div>
+                            </CustomScroll>
                         </div>
 
                         <div className="message-input row">

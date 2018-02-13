@@ -13,6 +13,7 @@
     "phoenix_html": "file:deps/phoenix_html",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
+    "react-custom-scroll": "^2.0.2",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
