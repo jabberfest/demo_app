@@ -130,6 +130,29 @@ main > #root, #root > div, #root > div > .chat-layout  {
             .chat-area{
                 display: flex;
                 flex-grow: 1;
+
+                .chat-window{
+                    display: flex;
+                    flex-direction: column;
+
+                    .messages{
+                        flex-grow: 1;
+                        overflow-y: auto;
+
+                        .message{
+                            padding: 10px 0px;
+                            display: flex;
+
+                            .avatar-img{
+                                padding-right: 10px;
+                            }
+                        }
+                    }
+    
+                    .message-input{
+                        height: 90px;
+                    }
+                }
             }
 
             .active-users{

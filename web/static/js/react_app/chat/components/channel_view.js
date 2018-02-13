@@ -11,6 +11,9 @@ import * as channelActions from '../actions/channel';
 // Selectors
 import { getActiveChannel } from '../reducers/index';
 
+// Views
+import Message from './message';
+
 class ChatView extends React.Component{
     constructor(){
         super();
@@ -27,7 +30,31 @@ class ChatView extends React.Component{
                 
                 <div className="chat-area">
                     <div className="chat-window col">
-                        text
+                        <div className="messages row">
+                            <div className="col">
+
+                                <Message />
+                                <Message />
+                                <Message />
+                                <Message />
+                                <Message />
+                                <Message />
+
+                            </div>
+                        </div>
+
+                        <div className="message-input row">
+                            <div className="col">
+                            <form autoComplete="off">
+                                <div className="form-group">
+                                    <input type="text" 
+                                    className="form-control" 
+                                    id="message" 
+                                    placeholder="Message" />
+                                </div>
+                            </form>
+                            </div>
+                        </div>
                     </div>
 
                     <div className="active-users">
