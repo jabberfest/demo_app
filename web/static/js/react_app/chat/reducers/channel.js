@@ -1,12 +1,24 @@
 import { combineReducers } from 'redux';
+import { isNil } from 'lodash';
 
 // Reducers
-const channelList = (state=[], action) => {
+const channelList = (state= {}, action) => {
     switch (action.type) {
         case 'ADD_CHANNEL_SUCCESS':
-            return [...state, action.response];
+            return {...state, ...action.response.entities.channels}
         case 'FETCH_CHANNELS_SUCCESS':
-            return [...action.response];
+            return {...action.response.entities.channels};
+        default:
+            return state;
+    }
+}
+
+const channelIds = (state= [], action) => {
+    switch (action.type) {
+        case 'ADD_CHANNEL_SUCCESS':
+            return [...state, action.response.result];
+        case 'FETCH_CHANNELS_SUCCESS':
+            return [...action.response.result];
         default:
             return state;
     }
@@ -24,8 +36,9 @@ const activeChannel = (state= null, action) =>{
 
 // Combine Reducers
 const channels = combineReducers({
-    channelList: channelList,
-    activeChannel: activeChannel
+    channelList,
+    channelIds,
+    activeChannel
 });
 
 export default channels;
@@ -33,9 +46,18 @@ export default channels;
 
 // Accessor helper function 
 export const getChannels = (state) => {
-    return state.channelList;
+    const ids = state.channelIds
+    return ids.map(id => getChannel(state, id))
+}
+
+export const getActiveChannelId = (state) => {
+    return state.activeChannel;
 }
 
 export const getActiveChannel = (state) => {
-    return state.activeChannel;
+    return isNil(state.activeChannel) ? state.activeChannel : state.channelList[state.activeChannel];
+}
+
+export const getChannel = (state, id) => {
+    return state.channelList[id];
 }

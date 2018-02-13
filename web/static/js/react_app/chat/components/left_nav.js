@@ -10,7 +10,7 @@ import ChannelItem from './channel_item';
 
 import * as channelActions from '../actions/channel';
 
-import { getChannels, getActiveChannel } from '../reducers/index';
+import { getChannels, getActiveChannelId } from '../reducers/index';
 
 
 class LeftNav extends React.Component{
@@ -32,8 +32,9 @@ class LeftNav extends React.Component{
                 addChannel, 
                 selectChannel, 
                 channels,
-                activeChannel
+                activeChannelId
               } = this.props
+
 
         return (
             <div className="left-container container">
@@ -59,7 +60,7 @@ class LeftNav extends React.Component{
                                         key={channel.id} 
                                         onClick={selectChannel} 
                                         channel={channel}
-                                        activeChannel={activeChannel} 
+                                        activeChannelId={activeChannelId} 
                                     />)
                             }
                         </ul>
@@ -83,7 +84,7 @@ LeftNav.defaultProps = {
 const mapStateToProps = (state) => {
     return {
         channels: getChannels(state),
-        activeChannel: getActiveChannel(state)
+        activeChannelId: getActiveChannelId(state)
     };
 }
 

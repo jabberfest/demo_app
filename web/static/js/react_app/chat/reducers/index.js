@@ -34,6 +34,10 @@ export const getChannels = (state) => {
     return fromChannel.getChannels(state.channels);
 }
 
+export const getActiveChannelId = (state) => {
+    return fromChannel.getActiveChannelId(state.channels);
+}
+
 export const getActiveChannel = (state) => {
     return fromChannel.getActiveChannel(state.channels);
 }

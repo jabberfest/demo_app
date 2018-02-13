@@ -3,8 +3,13 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+
+// Actions
 import * as channelActions from '../actions/channel';
 
+
+// Selectors
+import { getActiveChannel } from '../reducers/index';
 
 class ChatView extends React.Component{
     constructor(){
@@ -12,12 +17,12 @@ class ChatView extends React.Component{
     }
 
     render(){
-        //const {} = this.props;
+        const {activeChannel} = this.props;
 
         return (
             <div className="chat-view">
                 <div className="header">
-                    <div className="col"># demo</div>
+                    <div className="col"># { activeChannel.name }</div>
                 </div>
                 
                 <div className="chat-area">
@@ -29,8 +34,6 @@ class ChatView extends React.Component{
                         RightNaV
                     </div>
                 </div>
-
-
            </div>
         )
     }
@@ -39,6 +42,7 @@ class ChatView extends React.Component{
 
 
 ChatView.propTypes = {
+    activeChannel: PropTypes.object
 }
 
 ChatView.defaultProps = {
@@ -48,6 +52,7 @@ ChatView.defaultProps = {
 
 const mapStateToProps = (state) => {
     return {
+       activeChannel: getActiveChannel(state)
     };
 }
 

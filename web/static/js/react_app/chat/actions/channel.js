@@ -23,9 +23,10 @@ export const createAddChannel = (text) => (dispatch) => {
     }).then(api.handleErrors).then(response =>{
         return response.json()
     }).then(data => {
+        debugger;
         dispatch({
             type: 'ADD_CHANNEL_SUCCESS',
-            response: data
+            response: normalize(data, schema.channel)
         });
     }).catch(response => {
         response.json().then(data =>{
@@ -48,7 +49,7 @@ export const fetchChannels = () => (dispatch) => {
     }).then(data => {
         dispatch({
             type: 'FETCH_CHANNELS_SUCCESS',
-            response: data.channels
+            response: normalize(data.channels, schema.arrayOfChannels)
         });
     }).catch(response => {
         response.json().then(data =>{

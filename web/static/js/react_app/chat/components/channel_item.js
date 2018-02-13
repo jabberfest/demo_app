@@ -7,14 +7,14 @@ import { connect } from 'react-redux';
 import 'css/react_app/chat_layout.scss';
 
 
-const ChannelItem = ({onClick, channel, activeChannel}) => {
+const ChannelItem = ({onClick, channel, activeChannelId}) => {
     const id = channel.id
 
     const onClickHandler = (e) => {
         onClick(id, e)
     }
 
-    const active = activeChannel == id;
+    const active = activeChannelId == id;
     const classStr = active ? 'active' : '';
         
     return (<li className={classStr} onClick={onClickHandler}># {channel.name}</li>);
