@@ -1,8 +1,6 @@
 // Reducer
-const current_user = (state = {car: 'foo'}, action) => {
+const current_user = (state = Gon.assets().current_user, action) => {
     switch (action.type) {
-        case 'INCREMENT':
-            return state;
         default:
             return state;
     }

@@ -1,9 +1,12 @@
 defmodule Demo.ChannelMessage do
   use Demo.Web, :model
 
-  schema "channel_message" do
+  schema "channel_messages" do
     field :name, :string
     field :message, :string
+    field :avatar, :string
+
+    belongs_to :channel, Demo.Channel
 
     timestamps()
   end

@@ -23,8 +23,12 @@ main > #root, #root > div, #root > div > .chat-layout  {
         .current-user-container{
             margin-top:20px;
 
+            img{
+                border-radius: 4px;
+            }
+
             .current-user-name > span{
-                font-size: 1.08rem;
+                font-size: 0.9rem;
                 color: white;
                 font-weight: bold;
             }

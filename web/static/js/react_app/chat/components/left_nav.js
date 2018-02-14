@@ -10,7 +10,7 @@ import ChannelItem from './channel_item';
 
 import * as channelActions from '../actions/channel';
 
-import { getChannels, getActiveChannelId } from '../reducers/index';
+import { getChannels, getActiveChannelId, getCurrentUser } from '../reducers/index';
 
 
 class LeftNav extends React.Component{
@@ -32,7 +32,8 @@ class LeftNav extends React.Component{
                 addChannel, 
                 selectChannel, 
                 channels,
-                activeChannelId
+                activeChannelId,
+                currentUser
               } = this.props
 
 
@@ -40,11 +41,11 @@ class LeftNav extends React.Component{
             <div className="left-container container">
             <div className="current-user-container row">
                 <div className="col-4">
-                    <img height="50" width="50" />
+                    <img height="50" width="50"  src={""+currentUser.avatar}/>
                 </div>
 
                 <div className="col-8 current-user-name">
-                    <span>Fernando Arias</span>
+                    <span>{currentUser.name}</span>
                 </div>                 
             </div>
 
@@ -75,7 +76,8 @@ class LeftNav extends React.Component{
 
 
 LeftNav.propTypes = {
-    channels: PropTypes.array.isRequired
+    channels: PropTypes.array.isRequired,
+    currentUser: PropTypes.object.isRequired
 }
 
 LeftNav.defaultProps = {
@@ -84,7 +86,8 @@ LeftNav.defaultProps = {
 const mapStateToProps = (state) => {
     return {
         channels: getChannels(state),
-        activeChannelId: getActiveChannelId(state)
+        activeChannelId: getActiveChannelId(state),
+        currentUser: getCurrentUser(state)
     };
 }
 

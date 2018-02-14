@@ -4,6 +4,8 @@ defmodule Demo.Channel do
     schema "channels" do
         field :name, :string
 
+        has_many :channel_messages, Demo.ChannelMessage
+
         timestamps()
     end
 
