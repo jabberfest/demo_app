@@ -62,28 +62,12 @@
        return '/api/channel_messages';
      }, 
      
-     channelMessageEdit: function channelMessageEdit(id) {
-       return '/api/channel_messages/' + id + '/edit';
-     }, 
-     
-     channelMessageNew: function channelMessageNew() {
-       return '/api/channel_messages/new';
-     }, 
-     
      channelMessageShow: function channelMessageShow(id) {
        return '/api/channel_messages/' + id;
      }, 
      
      channelMessageCreate: function channelMessageCreate() {
        return '/api/channel_messages';
-     }, 
-     
-     channelMessageUpdate: function channelMessageUpdate(id) {
-       return '/api/channel_messages/' + id;
-     }, 
-     
-     channelMessageDelete: function channelMessageDelete(id) {
-       return '/api/channel_messages/' + id;
      }, 
      
      authRequest: function authRequest(provider) {

@@ -3,13 +3,23 @@ defmodule Demo.ChannelMessageController do
 
   alias Demo.ChannelMessage
 
+  plug Demo.AuthAccessPipeline
+
   def index(conn, _params) do
     channel_message = Repo.all(ChannelMessage)
     render(conn, "index.json", channel_message: channel_message)
   end
 
-  def create(conn, %{"channel_message" => channel_message_params}) do
-    changeset = ChannelMessage.changeset(%ChannelMessage{}, channel_message_params)
+  def create(conn, %{"channel_message" => channel_message_params}) do    
+    %{id: avatar, name: name} = get_session(conn, :current_user)
+    channel = Repo.get(Demo.Channel, channel_message_params["channel_id"])
+
+    changeset = 
+      channel
+      |> build_assoc(:channel_messages)
+      |> ChannelMessage.changeset(channel_message_params)
+      |> ChannelMessage.set_user_changeset(%{avatar: avatar, name: name})
+  
 
     case Repo.insert(changeset) do
       {:ok, channel_message} ->

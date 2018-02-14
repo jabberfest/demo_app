@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 // Actions
-import * as channelActions from '../actions/channel';
+import * as channelActions from '../actions/channel_message';
 
 
 // Selectors
@@ -20,7 +20,15 @@ class ChatView extends React.Component{
     }
 
     render(){
-        const {activeChannel} = this.props;
+        const {activeChannel, createChannelMessage} = this.props;
+        
+        let input;
+    
+        const onSubmitHandler = (e) => {
+            e.preventDefault();
+            createChannelMessage(input.value)
+        }
+
 
         return (
             <div className="chat-view">
@@ -45,12 +53,13 @@ class ChatView extends React.Component{
 
                         <div className="message-input row">
                             <div className="col">
-                            <form autoComplete="off">
+                            <form autoComplete="off" onSubmit={onSubmitHandler}>
                                 <div className="form-group">
                                     <input type="text" 
                                     className="form-control" 
                                     id="message" 
-                                    placeholder="Message" />
+                                    placeholder="Message"
+                                    ref = {(node) => {input = node;}} />
                                 </div>
                             </form>
                             </div>

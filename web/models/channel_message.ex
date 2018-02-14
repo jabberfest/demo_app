@@ -16,7 +16,13 @@ defmodule Demo.ChannelMessage do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:name, :message])
-    |> validate_required([:name, :message])
+    |> cast(params, [:message])
+    |> validate_required([:message])
   end
+
+  def set_user_changeset(struct, params \\ %{}) do
+    struct
+    |> cast(params, [:avatar, :name])
+  end
+
 end

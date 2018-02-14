@@ -23,7 +23,6 @@ export const createAddChannel = (text) => (dispatch) => {
     }).then(api.handleErrors).then(response =>{
         return response.json()
     }).then(data => {
-        debugger;
         dispatch({
             type: 'ADD_CHANNEL_SUCCESS',
             response: normalize(data, schema.channel)
