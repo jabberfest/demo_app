@@ -18,7 +18,7 @@ const Message = ({avatar, name, message}) => {
 
             <div className="message-content" >
                 <h5>{name}</h5>
-                <p>{message}</p>
+                <div><span>{message}</span></div>
             </div>
         </div>
     )

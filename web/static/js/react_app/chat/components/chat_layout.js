@@ -13,7 +13,8 @@ import ChannelView from './channel_view';
 import { getCurrentUser, getModalVisible, getModalErrors, getActiveChannelId} from '../reducers/index';
 
 // Actions
-import addChannel , * as channelActions from '../actions/channel';
+import * as channelActions from '../actions/channel';
+import * as channelMessageActions from '../actions/channel_message';
 
 //Styles
 import 'css/react_app/chat_layout.scss';
@@ -26,6 +27,15 @@ import {isNil} from 'lodash';
 class ChatLayout extends React.Component{
     constructor(){
         super();
+    }
+
+    componentDidUpdate(){
+        const {fetchChannelMessages, modalVisible} = this.props;
+        
+        // Fetch messages if we aren't showing the modal
+        if(!modalVisible){
+            fetchChannelMessages();
+        }    
     }
 
     render(){
@@ -79,7 +89,6 @@ ChatLayout.defaultProps = {
 
 }
 
-
 const mapStateToProps = (state) => {
     return {
         current_user: getCurrentUser(state),
@@ -89,10 +98,11 @@ const mapStateToProps = (state) => {
     };
 }
 
+const actions = {...channelActions,...channelMessageActions}
 
 ChatLayout = connect(
     mapStateToProps,
-    channelActions
+    actions
 )(ChatLayout);
 
 export default ChatLayout

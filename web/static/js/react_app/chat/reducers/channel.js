@@ -24,10 +24,19 @@ const channelIds = (state= [], action) => {
     }
 }
 
-const activeChannel = (state= null, action) =>{
+const activeChannel = (state= null, action) => {
     switch (action.type) {
         case 'SELECT_CHANNEL':
             return action.response;
+        default:
+            return state;
+    }
+}
+
+const fetchedChannels = (state=[], action) => {
+    switch (action.type) {
+        case 'FETCH_CHANNEL_MESSAGES_SUCCESS':
+            return [...state, action.response.channelId];
         default:
             return state;
     }
@@ -38,7 +47,8 @@ const activeChannel = (state= null, action) =>{
 const channels = combineReducers({
     channelList,
     channelIds,
-    activeChannel
+    activeChannel,
+    fetchedChannels
 });
 
 export default channels;
@@ -51,6 +61,7 @@ export const getChannels = (state) => {
 }
 
 export const getActiveChannelId = (state) => {
+    debugger;
     return state.activeChannel;
 }
 
@@ -60,4 +71,8 @@ export const getActiveChannel = (state) => {
 
 export const getChannel = (state, id) => {
     return state.channelList[id];
+}
+
+export const getFetchedChannels = (state) => {
+    return state.fetchedChannels;
 }

@@ -29,8 +29,10 @@ defmodule Demo.Router do
   scope "/api", Demo do
     pipe_through :api
 
-    resources "/channels", ChannelController, only: [:index, :create, :show]
-    resources "/channel_messages", ChannelMessageController, only: [:index, :create, :show]
+    resources "/channels", ChannelController, only: [:index, :create, :show] do
+      resources "/channel_messages", ChannelMessageController, only: [:index, :create, :show]
+    end
+    
   end
 
   scope "/auth", Demo do

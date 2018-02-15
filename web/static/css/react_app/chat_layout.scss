@@ -156,6 +156,10 @@ main > #root, #root > div, #root > div > .chat-layout  {
                                     border-radius: 4px;
                                 }
                             }
+
+                            span{
+                                word-break: break-word;
+                            }
                         }
 
                         .inner-handle{

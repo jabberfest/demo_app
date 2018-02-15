@@ -2,17 +2,29 @@ defmodule Demo.ChannelMessageController do
   use Demo.Web, :controller
 
   alias Demo.ChannelMessage
+  alias Demo.Channel
 
   plug Demo.AuthAccessPipeline
 
-  def index(conn, _params) do
-    channel_message = Repo.all(ChannelMessage)
-    render(conn, "index.json", channel_message: channel_message)
+  def index(conn, %{"channel_id" => channel_id}) do
+    channel = Repo.get!(Channel, channel_id)
+
+    # TODO: create scope
+    channel_messages = Repo.all(
+      from c in assoc(channel, :channel_messages),
+      order_by: [asc: c.updated_at]
+    )
+
+    render(conn, "index.json", channel_message: channel_messages)
   end
 
-  def create(conn, %{"channel_message" => channel_message_params}) do    
+  def create(conn, %{
+    "channel_id" => channel_id,
+    "channel_message" => channel_message_params
+  }) do    
     %{id: avatar, name: name} = get_session(conn, :current_user)
-    channel = Repo.get(Demo.Channel, channel_message_params["channel_id"])
+
+    channel = Repo.get(Demo.Channel, channel_id)
 
     changeset = 
       channel
@@ -25,7 +37,7 @@ defmodule Demo.ChannelMessageController do
       {:ok, channel_message} ->
         conn
         |> put_status(:created)
-        |> put_resp_header("location", channel_message_path(conn, :show, channel_message))
+        |> put_resp_header("location", channel_channel_message_path(conn, :show, channel_id, channel_message))
         |> render("show.json", channel_message: channel_message)
       {:error, changeset} ->
         conn

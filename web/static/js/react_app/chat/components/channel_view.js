@@ -43,7 +43,7 @@ class ChatView extends React.Component{
                 <div className="chat-area">
                     <div className="chat-window col">
                         <div className="messages row">
-                            <CustomScroll heightRelativeToParent="calc(100% - 20px)">
+                            <CustomScroll flex="1" keepAtBottom={true}>
                                 <div className="col">
                                     {
                                         channelMessages.map((message)=> 

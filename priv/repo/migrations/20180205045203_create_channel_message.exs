@@ -5,7 +5,7 @@ defmodule Demo.Repo.Migrations.CreateChannelMessage do
     create table(:channel_messages) do
       add :name, :string
       add :avatar, :string
-      add :message, :string
+      add :message, :text
 
       timestamps()
     end

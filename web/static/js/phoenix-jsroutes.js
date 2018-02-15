@@ -58,16 +58,16 @@
        return '/api/channels';
      }, 
      
-     channelMessageIndex: function channelMessageIndex() {
-       return '/api/channel_messages';
+     channelChannelMessageIndex: function channelChannelMessageIndex(channel_id) {
+       return '/api/channels/' + channel_id + '/channel_messages';
      }, 
      
-     channelMessageShow: function channelMessageShow(id) {
-       return '/api/channel_messages/' + id;
+     channelChannelMessageShow: function channelChannelMessageShow(channel_id, id) {
+       return '/api/channels/' + channel_id + '/channel_messages/' + id;
      }, 
      
-     channelMessageCreate: function channelMessageCreate() {
-       return '/api/channel_messages';
+     channelChannelMessageCreate: function channelChannelMessageCreate(channel_id) {
+       return '/api/channels/' + channel_id + '/channel_messages';
      }, 
      
      authRequest: function authRequest(provider) {

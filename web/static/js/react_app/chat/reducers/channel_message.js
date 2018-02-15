@@ -4,6 +4,7 @@ import { isNil, isUndefined } from 'lodash';
 // Reducers
 const channelMessagesByChannelById = (state= {}, action) => {
     switch (action.type) {
+        case 'FETCH_CHANNEL_MESSAGES_SUCCESS':
         case 'ADD_CHANNEL_MESSAGE_SUCCESS':
             const newState = {...state};
             const channelId = action.response.channelId;
@@ -26,12 +27,30 @@ const channelMessagesByChannelById = (state= {}, action) => {
 }
 
 const channelMessagesByChannelId = (state= {}, action) => {
-    switch (action.type) {
-        case 'ADD_CHANNEL_MESSAGE_SUCCESS':
-            const newState = {...state};
-            const channelId = action.response.channelId;
+    let newState;
+    let channelId;
+    let channelMessageId;
 
-            const channelMessageId = action.response.channelMessage.result
+    switch (action.type) {
+        case 'FETCH_CHANNEL_MESSAGES_SUCCESS':
+            newState = {...state};
+            channelId = action.response.channelId;
+
+            channelMessageId = action.response.channelMessage.result
+
+            // If channel not already added, add it
+            if (_.isUndefined(newState[channelId])){  
+                newState[channelId] = [...channelMessageId];
+            } else{
+                newState[channelId] = [...newState[channelId], ...channelMessageId]              
+            }
+            debugger;
+            return newState;
+        case 'ADD_CHANNEL_MESSAGE_SUCCESS':
+            newState = {...state};
+            channelId = action.response.channelId;
+
+            channelMessageId = action.response.channelMessage.result
 
             // If channel not already added, add it
             if (_.isUndefined(newState[channelId])){  
@@ -44,7 +63,6 @@ const channelMessagesByChannelId = (state= {}, action) => {
             return state;
     }
 }
-
 
 // Combine Reducers
 const channelMessages = combineReducers({
