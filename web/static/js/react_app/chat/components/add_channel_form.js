@@ -13,7 +13,7 @@ const AddChannelForm = ({onCancelClick, onCreateClick, errors}) => {
     
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        onCreateClick(input.value)
+        onCreateClick(input.value);
     }
 
     return (        

@@ -8,7 +8,7 @@ import * as channelActions from '../actions/channel_message';
 
 
 // Selectors
-import { getActiveChannel } from '../reducers/index';
+import { getActiveChannel, getActiveChannelMessages } from '../reducers/index';
 
 // Views
 import Message from './message';
@@ -20,15 +20,19 @@ class ChatView extends React.Component{
     }
 
     render(){
-        const {activeChannel, createChannelMessage} = this.props;
+        const {
+            activeChannel, 
+            createChannelMessage,
+            channelMessages
+        } = this.props;
         
         let input;
     
         const onSubmitHandler = (e) => {
             e.preventDefault();
             createChannelMessage(input.value)
+            input.value= "";
         }
-
 
         return (
             <div className="chat-view">
@@ -41,12 +45,15 @@ class ChatView extends React.Component{
                         <div className="messages row">
                             <CustomScroll heightRelativeToParent="calc(100% - 20px)">
                                 <div className="col">
-                                    <Message />
-                                    <Message />
-                                    <Message />
-                                    <Message />
-                                    <Message />
-                                    <Message />
+                                    {
+                                        channelMessages.map((message)=> 
+                                            <Message 
+                                                key={message.id}
+                                                avatar={message.avatar}
+                                                name={message.name}
+                                                message={message.message} 
+                                            />)
+                                    }
                                 </div>
                             </CustomScroll>
                         </div>
@@ -88,7 +95,8 @@ ChatView.defaultProps = {
 
 const mapStateToProps = (state) => {
     return {
-       activeChannel: getActiveChannel(state)
+       activeChannel: getActiveChannel(state),
+       channelMessages: getActiveChannelMessages(state)
     };
 }
 

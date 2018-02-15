@@ -56,10 +56,10 @@ const channelMessages = combineReducers({
 export default channelMessages;
 
 
-// Accessor helper functions 
+// Accessor helper functions
 export const getChannelMessages = (state, channelId) => {
     const ids = state.channelMessagesByChannelId[channelId]
-    return ids.map(id => getChannelMessage(state, id))
+    return !_.isUndefined(ids) ? ids.map(id => getChannelMessage(state, channelId, id)) : []
 }
 
 export const getChannelMessage = (state, channelId, id) => {

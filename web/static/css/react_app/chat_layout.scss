@@ -152,6 +152,9 @@ main > #root, #root > div, #root > div > .chat-layout  {
 
                             .avatar-img{
                                 padding-right: 10px;
+                                img{
+                                    border-radius: 4px;
+                                }
                             }
                         }
 
