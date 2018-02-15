@@ -10,7 +10,12 @@ import AddChannelForm from './add_channel_form';
 import ChannelView from './channel_view';
 
 // Selectors
-import { getCurrentUser, getModalVisible, getModalErrors, getActiveChannelId} from '../reducers/index';
+import { 
+    getCurrentUser, 
+    getModalVisible, 
+    getModalErrors, 
+    getActiveChannelId,
+    getFetchedChannels} from '../reducers/index';
 
 // Actions
 import * as channelActions from '../actions/channel';
@@ -30,11 +35,20 @@ class ChatLayout extends React.Component{
     }
 
     componentDidUpdate(){
-        const {fetchChannelMessages, modalVisible} = this.props;
-        
-        // Fetch messages if we aren't showing the modal
-        if(!modalVisible){
-            fetchChannelMessages();
+        const {
+            fetchChannelMessages, 
+            modalVisible,
+            activeChannelId,
+            fetchedChannels
+        } = this.props;
+
+        // Fetch channel if modal isn't shown, and the first time we load the channel
+        const shouldFetchChannel = !modalVisible && 
+            !_.isNil(activeChannelId) && 
+            !fetchedChannels.includes(activeChannelId)
+
+        if(shouldFetchChannel){
+            fetchChannelMessages(activeChannelId);
         }    
     }
 
@@ -94,7 +108,8 @@ const mapStateToProps = (state) => {
         current_user: getCurrentUser(state),
         modalVisible: getModalVisible(state),
         modalErrors: getModalErrors(state),
-        activeChannelId: getActiveChannelId(state)
+        activeChannelId: getActiveChannelId(state),
+        fetchedChannels: getFetchedChannels(state)
     };
 }
 

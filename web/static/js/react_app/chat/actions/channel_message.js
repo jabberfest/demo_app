@@ -40,36 +40,29 @@ export const createChannelMessage = (text) => (dispatch, getState) => {
     })
 }
 
-export const fetchChannelMessages = (text) => (dispatch, getState) => {
-    const state = getState()
-    const channelId = getActiveChannelId(state);
-    const fetchedChannels = getFetchedChannels(state);
-
-    // If a channel is selected and we haven't fetched it yet
-    if (!_.isNil(channelId) && !fetchedChannels.includes(channelId)) {
-        /**
-         * @todo Refactor into utility method in api
-         */
-        api.fetch(routes.channelChannelMessageIndex(channelId),{
-            method: 'get'
-        }).then(api.handleErrors).then(response =>{
-            return response.json()
-        }).then(data => {
+export const fetchChannelMessages = (channelId) => (dispatch) => {
+    /**
+     * @todo Refactor into utility method in api
+     */
+    api.fetch(routes.channelChannelMessageIndex(channelId),{
+        method: 'get'
+    }).then(api.handleErrors).then(response =>{
+        return response.json()
+    }).then(data => {
+        dispatch({
+            type: 'FETCH_CHANNEL_MESSAGES_SUCCESS',
+            response: {
+                channelMessage: normalize(data.channel_messages, 
+                    schema.arrayofChannelMessages),
+                channelId: channelId
+            }
+        });
+    }).catch(response => {
+        response.json().then(data =>{
             dispatch({
-                type: 'FETCH_CHANNEL_MESSAGES_SUCCESS',
-                response: {
-                    channelMessage: normalize(data.channel_messages, 
-                        schema.arrayofChannelMessages),
-                    channelId: channelId
-                }
-            });
-        }).catch(response => {
-            response.json().then(data =>{
-                dispatch({
-                    type: 'FETCH_CHANNELS_MESSAGES_ERROR',
-                    response: data.errors
-                })
+                type: 'FETCH_CHANNELS_MESSAGES_ERROR',
+                response: data.errors
             })
-        })   
-    }
+        })
+    }) 
 }
