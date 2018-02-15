@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-import { isNil, isUndefined } from 'lodash';
+import { isNil, isUndefined, isArray } from 'lodash';
 
 // Reducers
 const channelMessagesByChannelById = (state= {}, action) => {
     switch (action.type) {
         case 'FETCH_CHANNEL_MESSAGES_SUCCESS':
         case 'ADD_CHANNEL_MESSAGE_SUCCESS':
-            const newState = {...state};
+            let newState = {...state};
             const channelId = action.response.channelId;
 
             const channelMessages = {
@@ -27,38 +27,30 @@ const channelMessagesByChannelById = (state= {}, action) => {
 }
 
 const channelMessagesByChannelId = (state= {}, action) => {
-    let newState;
-    let channelId;
-    let channelMessageId;
+
+    const addChannels = (state, action) => {
+        let newState = {...state};
+        const channelId = action.response.channelId;
+
+        let channelMessageId = action.response.channelMessage.result
+        //If normalize returns 1 result or an array of results
+        channelMessageId = _.isArray(channelMessageId) ? channelMessageId : [channelMessageId]
+
+
+        // If channel not already added, add it
+        if (_.isUndefined(newState[channelId])){  
+            newState[channelId] = [...channelMessageId];
+        } else{
+            newState[channelId] = [...newState[channelId], ...channelMessageId]              
+        }
+        return newState;
+    }
 
     switch (action.type) {
         case 'FETCH_CHANNEL_MESSAGES_SUCCESS':
-            newState = {...state};
-            channelId = action.response.channelId;
-
-            channelMessageId = action.response.channelMessage.result
-
-            // If channel not already added, add it
-            if (_.isUndefined(newState[channelId])){  
-                newState[channelId] = [...channelMessageId];
-            } else{
-                newState[channelId] = [...newState[channelId], ...channelMessageId]              
-            }
-            debugger;
-            return newState;
+            return addChannels(state, action);
         case 'ADD_CHANNEL_MESSAGE_SUCCESS':
-            newState = {...state};
-            channelId = action.response.channelId;
-
-            channelMessageId = action.response.channelMessage.result
-
-            // If channel not already added, add it
-            if (_.isUndefined(newState[channelId])){  
-                newState[channelId] = [channelMessageId];
-            } else{
-                newState[channelId] = [...newState[channelId], channelMessageId]              
-            }
-            return newState;
+            return addChannels(state, action);
         default:
             return state;
     }

@@ -35,6 +35,10 @@ class ChatLayout extends React.Component{
     }
 
     componentDidUpdate(){
+        this.fetchInitialChannelMessages();
+    }
+
+    fetchInitialChannelMessages(){
         const {
             fetchChannelMessages, 
             modalVisible,
@@ -42,7 +46,7 @@ class ChatLayout extends React.Component{
             fetchedChannels
         } = this.props;
 
-        // Fetch channel if modal isn't shown, and the first time we load the channel
+        // Fetch channel if modal isn't shown and haven't done initial fetch
         const shouldFetchChannel = !modalVisible && 
             !_.isNil(activeChannelId) && 
             !fetchedChannels.includes(activeChannelId)
