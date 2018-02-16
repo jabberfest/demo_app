@@ -23,8 +23,8 @@ class LeftNav extends React.Component{
     }
 
     fetchData() {
-        const { fetchChannels } = this.props
-        fetchChannels();
+        const { fetchChannels, subscribeToChannels } = this.props
+        fetchChannels().then(()=>subscribeToChannels());
     }
 
     render(){

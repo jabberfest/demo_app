@@ -44,7 +44,7 @@ export const fetchChannelMessages = (channelId) => (dispatch) => {
     /**
      * @todo Refactor into utility method in api
      */
-    api.fetch(routes.channelChannelMessageIndex(channelId),{
+    return api.fetch(routes.channelChannelMessageIndex(channelId),{
         method: 'get'
     }).then(api.handleErrors).then(response =>{
         return response.json()

@@ -61,7 +61,6 @@ export const getChannels = (state) => {
 }
 
 export const getActiveChannelId = (state) => {
-    debugger;
     return state.activeChannel;
 }
 

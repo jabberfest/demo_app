@@ -2,7 +2,7 @@ defmodule Demo.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", Demo.RoomChannel
+  channel "rooms:*", Demo.RoomChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
@@ -19,8 +19,13 @@ defmodule Demo.UserSocket do
   #
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
-  def connect(_params, socket) do
-    {:ok, socket}
+  def connect(%{"token" => token}, socket) do
+    case Demo.Guardian.resource_from_token(token) do
+      {:ok, resource, _claims} ->
+        {:ok, assign(socket, :user, resource)}
+      {:error, _reason} ->
+        :error
+    end
   end
 
   # Socket id's are topics that allow you to identify all sockets for a given user:
@@ -33,5 +38,5 @@ defmodule Demo.UserSocket do
   #     Demo.Endpoint.broadcast("users_socket:#{user.id}", "disconnect", %{})
   #
   # Returning `nil` makes this socket anonymous.
-  def id(_socket), do: nil
+  def id(socket), do: "users_socket:#{socket.assigns.user["id"]}"
 end

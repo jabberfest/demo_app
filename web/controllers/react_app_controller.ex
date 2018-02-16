@@ -15,6 +15,7 @@ defmodule Demo.ReactAppController do
         conn
         |> put_gon(:current_user, current_user)
         |> put_gon(:csrf_token, csrf_token)
+        |> put_gon(:access_token, Demo.Guardian.Plug.current_token(conn))
         |> render("index.html", layout: {Demo.LayoutView, "app_fullwidth.html"})
     end
 end
