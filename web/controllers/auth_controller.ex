@@ -30,7 +30,7 @@ defmodule Demo.AuthController do
         {:ok, user} ->
           conn
           |> put_flash(:info, "Successfully authenticated.")
-          |> put_session(:current_user, user)
+          #|> put_session(:current_user, user)
           |> Demo.Guardian.Plug.sign_in(user)
           |> redirect(to: "/")
         {:error, reason} ->

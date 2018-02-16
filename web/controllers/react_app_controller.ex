@@ -7,11 +7,11 @@ defmodule Demo.ReactAppController do
         
 
     def index(conn, _params) do
-        {_ ,current_user} = get_session(conn, :current_user)
-        |> Map.pop(:token)
+        {_, current_user} = Demo.Guardian.Plug.current_resource(conn)
+        |> Map.pop("token")
 
         csrf_token = get_csrf_token()
-   
+
         conn
         |> put_gon(:current_user, current_user)
         |> put_gon(:csrf_token, csrf_token)

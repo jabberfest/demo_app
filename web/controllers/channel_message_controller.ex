@@ -22,7 +22,8 @@ defmodule Demo.ChannelMessageController do
     "channel_id" => channel_id,
     "channel_message" => channel_message_params
   }) do    
-    %{id: avatar, name: name} = get_session(conn, :current_user)
+
+    %{"id" => avatar, "name" => name} = Demo.Guardian.Plug.current_resource(conn)
 
     channel = Repo.get(Demo.Channel, channel_id)
 
