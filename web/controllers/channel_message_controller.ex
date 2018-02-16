@@ -36,6 +36,10 @@ defmodule Demo.ChannelMessageController do
 
     case Repo.insert(changeset) do
       {:ok, channel_message} ->
+        # Broadcast message to channel
+        json_response = Demo.ChannelMessageView.render("show.json", channel_message: channel_message)
+        Demo.Endpoint.broadcast!("rooms:" <> channel_id, "new_message", json_response)
+
         conn
         |> put_status(:created)
         |> put_resp_header("location", channel_channel_message_path(conn, :show, channel_id, channel_message))

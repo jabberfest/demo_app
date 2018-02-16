@@ -5,6 +5,10 @@ import * as api from 'js/fetch-api';
 import socket from "js/socket";
 
 
+// Selectors
+import { getChannelIds, getCurrentUserId } from '../reducers/index';
+
+
 export const addChannel = () => ({
     type: 'ADD_CHANNEL'
 });
@@ -39,10 +43,38 @@ export const createAddChannel = (text) => (dispatch) => {
     })
 }
 
-export const subscribeToChannels = () => (dispatch) => {
-    debugger;
-    dispatch({
-        type: "SUBSCRIBE_TO_CHANNELS"
+export const subscribeToChannels = () => (dispatch, getState) => {
+    const state = getState()
+    const channelIds = getChannelIds(state)
+    const currentUserId = getCurrentUserId(state)
+
+    const channels = channelIds.map((id)=>{
+        const channel = socket.channel(`rooms:${id}`, {})
+        
+        channel.join().
+            receive("ok", resp => {
+                dispatch({
+                    type: "SUBSCRIBE_CHANNEL_SUCCESS",
+                    response: id
+                })
+            }).receive("error", resp =>{
+                dispatch({
+                    type: "SUBSCRIBE_CHANNEL_ERROR",
+                    response: id
+                })
+            });
+        
+        channel.on("new_message", payload =>{
+            dispatch({
+                type: "CHANNEL_MESSAGE_RECEIVED",
+                response: {
+                    channelMessage: normalize(payload, schema.channelMessage), 
+                    channelId: id,
+                    currentUserId: currentUserId
+                }
+            }) 
+        });
+        
     })
 }
 

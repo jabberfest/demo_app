@@ -56,8 +56,12 @@ export default channels;
 
 // Accessor helper function 
 export const getChannels = (state) => {
-    const ids = state.channelIds
-    return ids.map(id => getChannel(state, id))
+    const ids = state.channelIds;
+    return ids.map(id => getChannel(state, id));
+}
+
+export const getChannelIds = (state) => {
+    return state.channelIds;
 }
 
 export const getActiveChannelId = (state) => {

@@ -14,3 +14,7 @@ export default current_user
 export const getUser = (state) =>{
     return state
 }
+
+export const getUserId = (state) => {
+    return state.id
+}

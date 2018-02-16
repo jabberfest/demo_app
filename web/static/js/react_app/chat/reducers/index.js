@@ -25,6 +25,10 @@ export const getCurrentUser = (state) => {
     return fromUser.getUser(state.current_user);
 };
 
+export const getCurrentUserId = (state) => {
+    return fromUser.getUserId(state.current_user);
+}
+
 export const getModalVisible = (state) => {
     return fromModal.getModalVisible(state.modal);
 }
@@ -35,6 +39,10 @@ export const getModalErrors = (state) => {
 
 export const getChannels = (state) => {
     return fromChannel.getChannels(state.channels);
+}
+
+export const getChannelIds = (state) => {
+    return fromChannel.getChannelIds(state.channels);
 }
 
 export const getActiveChannelId = (state) => {
