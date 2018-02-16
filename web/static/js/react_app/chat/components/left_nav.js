@@ -19,7 +19,10 @@ class LeftNav extends React.Component{
     }
     
     componentDidMount() {
+        const {subscribeToChannelList} = this.props
+        
         this.fetchData();
+        subscribeToChannelList()
     }
 
     fetchData() {

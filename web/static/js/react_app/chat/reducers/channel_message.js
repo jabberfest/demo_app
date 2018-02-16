@@ -1,20 +1,6 @@
 import { combineReducers } from 'redux';
 import { isNil, isUndefined, isArray, values } from 'lodash';
 
-// NO-OP if message is from current user
-// const checkIfCurrentUser = (state, action, func) =>{
-//     const userForMessage = values(action.response.
-//         channelMessage.entities.channel_messages)[0].avatar;
-
-//     // If the pushed message was sent by the current user, ignore it
-//     if(action.response.currentUserId == userForMessage){
-//         return state;
-//     }else{
-//         return func(state, action);    
-//     }
-// }
-
-
 // Reducers
 const channelMessagesByChannelById = (state= {}, action) => {
     
@@ -38,11 +24,8 @@ const channelMessagesByChannelById = (state= {}, action) => {
     
     switch (action.type) {
         case 'FETCH_CHANNEL_MESSAGES_SUCCESS':
-        //case 'ADD_CHANNEL_MESSAGE_SUCCESS':
-            return addChannels(state, action);
         case 'CHANNEL_MESSAGE_RECEIVED':
-            return addChannels(state,action);
-            //return checkIfCurrentUser(state,action, addChannels);
+            return addChannels(state, action);
         default:
             return state;
     }
@@ -70,11 +53,8 @@ const channelMessagesByChannelId = (state= {}, action) => {
 
     switch (action.type) {
         case 'FETCH_CHANNEL_MESSAGES_SUCCESS':
-        //case 'ADD_CHANNEL_MESSAGE_SUCCESS':
-            return addChannels(state, action);
         case 'CHANNEL_MESSAGE_RECEIVED':
-            return addChannels(state,action);
-            //return checkIfCurrentUser(state,action, addChannels);
+            return addChannels(state, action);
         default:
             return state;
     }

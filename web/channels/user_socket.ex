@@ -3,6 +3,7 @@ defmodule Demo.UserSocket do
 
   ## Channels
   channel "rooms:*", Demo.RoomChannel
+  channel "room-list:*", Demo.RoomListChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket

@@ -4,7 +4,7 @@ import { isNil } from 'lodash';
 // Reducers
 const channelList = (state= {}, action) => {
     switch (action.type) {
-        case 'ADD_CHANNEL_SUCCESS':
+        case 'CHANNEL_ADDED_RECEIVED':
             return {...state, ...action.response.entities.channels}
         case 'FETCH_CHANNELS_SUCCESS':
             return {...action.response.entities.channels};
@@ -15,7 +15,7 @@ const channelList = (state= {}, action) => {
 
 const channelIds = (state= [], action) => {
     switch (action.type) {
-        case 'ADD_CHANNEL_SUCCESS':
+        case 'CHANNEL_ADDED_RECEIVED':
             return [...state, action.response.result];
         case 'FETCH_CHANNELS_SUCCESS':
             return [...action.response.result];

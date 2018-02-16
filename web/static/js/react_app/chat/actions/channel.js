@@ -43,6 +43,24 @@ export const createAddChannel = (text) => (dispatch) => {
     })
 }
 
+export const subscribeToChannelList = () => (dispatch) => {
+    const roomListChannel = socket.channel("room-list:lobby",{})
+
+    roomListChannel.join().
+        receive("ok", resp =>{
+            dispatch({
+                type: "SUBSCRIBE_CHANNEL_LIST_SUCCESS"
+            })
+        })
+    
+    roomListChannel.on("new_channel", payload =>{
+        dispatch({
+            type: "CHANNEL_ADDED_RECEIVED",
+            response: normalize(payload, schema.channel)
+        })
+    })
+}
+
 export const subscribeToChannels = () => (dispatch, getState) => {
     const state = getState()
     const channelIds = getChannelIds(state)
