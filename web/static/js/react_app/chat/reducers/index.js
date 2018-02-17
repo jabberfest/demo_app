@@ -4,9 +4,8 @@ import { combineReducers } from 'redux';
 import current_user, * as fromUser from '../reducers/user';
 import channels, * as fromChannel from '../reducers/channel';
 import channelMessages, * as fromChannelMessage from '../reducers/channel_message';
+import onlineUsers, * as fromOnlineUser from '../reducers/online_user';
 import modal, * as fromModal from '../reducers/modal';
-
-
 
 
 // Combine Reducers
@@ -14,7 +13,8 @@ const demoApp = combineReducers({
     current_user,
     channels,
     modal,
-    channelMessages
+    channelMessages,
+    onlineUsers
 });
 
 

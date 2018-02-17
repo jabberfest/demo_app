@@ -67,6 +67,23 @@ export const subscribeToChannels = () => (dispatch, getState) => {
     const channelIds = getChannelIds(state)
     const currentUserId = getCurrentUserId(state)
 
+    const dispatchOnlineUsers = (channelId, presences) => {
+        const onlineUsers = Presence.list(presences, (id, {metas: [first, ...rest]}) => {
+            first.count = rest.length + 1 // count of this user's presences
+            first.id = id
+            return first
+        });
+
+        dispatch({
+            type: "UPDATE_CHANNEL_USER_LIST",
+            response: {
+                channelId: channelId,
+                onlineUsers: normalize(onlineUsers, schema.arrayofOnlineUsers)
+            }
+        })
+    }
+
+
     const channels = channelIds.map((id)=>{
         const channel = socket.channel(`rooms:${id}`, {})
         let presences = {}
@@ -97,16 +114,12 @@ export const subscribeToChannels = () => (dispatch, getState) => {
 
         channel.on("presence_state", state => {
             presences = Presence.syncState(presences, state)
-            Presence.list(presences, (id, {metas: [first, ...rest]}) => {
-                debugger;
-            });
+            dispatchOnlineUsers(id, presences)
         });
 
         channel.on("presence_diff", diff => {
             presences = Presence.syncDiff(presences, diff)
-            Presence.list(presences, (id, {metas: [first, ...rest]}) => {
-                debugger;
-            });
+            dispatchOnlineUsers(id, presences)
         })
         
     })
