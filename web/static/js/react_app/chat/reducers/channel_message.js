@@ -4,7 +4,7 @@ import { isNil, isUndefined, isArray, values } from 'lodash';
 // Reducers
 const channelMessagesByChannelById = (state= {}, action) => {
     
-    const addChannels = (state, action) => {
+    const addChannels = (state, action, opts={reset:false}) => {
         let newState = {...state};
         const channelId = action.response.channelId;
 
@@ -16,14 +16,20 @@ const channelMessagesByChannelById = (state= {}, action) => {
         if (_.isUndefined(newState[channelId])){  
             newState[channelId] = channelMessages;
         } else{
-            //Dup channel messages by channel id
-            newState[channelId] = {...newState[channelId], ...channelMessages}              
+            if(opts.reset){
+                //Dup channel messages by channel id
+                newState[channelId] = channelMessages  
+            }else{
+                //Dup channel messages by channel id
+                newState[channelId] = {...newState[channelId], ...channelMessages}  
+            }
         }
         return newState;
     }
     
     switch (action.type) {
         case 'FETCH_CHANNEL_MESSAGES_SUCCESS':
+            return addChannels(state,action, {reset:true});
         case 'CHANNEL_MESSAGE_RECEIVED':
             return addChannels(state, action);
         default:
@@ -33,7 +39,7 @@ const channelMessagesByChannelById = (state= {}, action) => {
 
 const channelMessagesByChannelId = (state= {}, action) => {
 
-    const addChannels = (state, action) => {
+    const addChannels = (state, action, opts={reset:false}) => {
         let newState = {...state};
         const channelId = action.response.channelId;
 
@@ -46,13 +52,18 @@ const channelMessagesByChannelId = (state= {}, action) => {
         if (_.isUndefined(newState[channelId])){  
             newState[channelId] = [...channelMessageId];
         } else{
-            newState[channelId] = [...newState[channelId], ...channelMessageId]              
+            if(opts.reset){
+                newState[channelId] = [...channelMessageId]   
+            }else{
+                newState[channelId] = [...newState[channelId], ...channelMessageId]   
+            }                 
         }
         return newState;
     }
 
     switch (action.type) {
         case 'FETCH_CHANNEL_MESSAGES_SUCCESS':
+            return addChannels(state, action, {reset:true});
         case 'CHANNEL_MESSAGE_RECEIVED':
             return addChannels(state, action);
         default:
