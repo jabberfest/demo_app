@@ -14,6 +14,7 @@ defmodule Demo do
       supervisor(Demo.Endpoint, []),
       # Start your own worker by calling: Demo.Worker.start_link(arg1, arg2, arg3)
       # worker(Demo.Worker, [arg1, arg2, arg3]),
+      supervisor(Demo.Presence,[])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

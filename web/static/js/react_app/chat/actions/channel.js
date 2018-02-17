@@ -3,6 +3,7 @@ import * as schema from './schema';
 import { normalize } from 'normalizr';
 import * as api from 'js/fetch-api';
 import socket from "js/socket";
+import {Presence} from "phoenix"
 
 
 // Selectors
@@ -68,7 +69,8 @@ export const subscribeToChannels = () => (dispatch, getState) => {
 
     const channels = channelIds.map((id)=>{
         const channel = socket.channel(`rooms:${id}`, {})
-        
+        let presences = {}
+
         channel.join().
             receive("ok", resp => {
                 dispatch({
@@ -92,6 +94,20 @@ export const subscribeToChannels = () => (dispatch, getState) => {
                 }
             }) 
         });
+
+        channel.on("presence_state", state => {
+            presences = Presence.syncState(presences, state)
+            Presence.list(presences, (id, {metas: [first, ...rest]}) => {
+                debugger;
+            });
+        });
+
+        channel.on("presence_diff", diff => {
+            presences = Presence.syncDiff(presences, diff)
+            Presence.list(presences, (id, {metas: [first, ...rest]}) => {
+                debugger;
+            });
+        })
         
     })
 }

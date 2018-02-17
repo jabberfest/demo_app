@@ -23,7 +23,10 @@ defmodule Demo.UserSocket do
   def connect(%{"token" => token}, socket) do
     case Demo.Guardian.resource_from_token(token) do
       {:ok, resource, _claims} ->
-        {:ok, assign(socket, :user, resource)}
+        {_, sanitizedResource} = resource
+        |> Map.pop("token")
+
+        {:ok, assign(socket, :user, sanitizedResource)}
       {:error, _reason} ->
         :error
     end
