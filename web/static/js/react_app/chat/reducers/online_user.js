@@ -46,21 +46,21 @@ const onlineUsersByChannelId = (state= {}, action) => {
 }
 
 // Combine Reducers
-const OnlineUsers = combineReducers({
+const onlineUsers = combineReducers({
     onlineUsersByChannelById,
     onlineUsersByChannelId
 });
 
 
-export default OnlineUsers;
+export default onlineUsers;
 
 
-// // Accessor helper functions
-// export const getOnlineUsers = (state, channelId) => {
-//     const ids = state.OnlineUsersByChannelId[channelId]
-//     return !_.isUndefined(ids) ? ids.map(id => getonlineUsers(state, channelId, id)) : []
-// }
+// Accessor helper functions
+export const getOnlineUsers = (state, channelId) => {
+    const ids = state.onlineUsersByChannelId[channelId]
+    return !_.isUndefined(ids) ? ids.map(id => getOnlineUser(state, channelId, id)) : []
+}
 
-// export const getonlineUsers = (state, channelId, id) => {
-//     return state.OnlineUsersByChannelById[channelId][id]
-// }
+export const getOnlineUser = (state, channelId, id) => {
+    return state.onlineUsersByChannelById[channelId][id]
+}

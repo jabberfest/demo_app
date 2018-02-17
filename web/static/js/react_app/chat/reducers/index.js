@@ -68,3 +68,15 @@ export const getChannelMessages = (state, channelId) => {
 export const getChannelMessage = (state, channelId, id) => {
     return fromChannelMessage.getChannelMessage(state.channelMessages, channelId, id);
 }
+
+export const getActiveChannelOnlineUsers = (state) => {
+    return getOnlineUsers(state, getActiveChannelId(state))
+}
+
+export const getOnlineUsers = (state, channelId) => {
+    return fromOnlineUser.getOnlineUsers(state.onlineUsers, channelId);
+}
+
+export const getOnlineUser = (state, channelId, id) => {
+    return fromOnlineUser.getOnlineUser(state.onlineUsers, channelId, id);
+}

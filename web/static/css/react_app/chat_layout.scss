@@ -177,6 +177,7 @@ main > #root, #root > div, #root > div > .chat-layout  {
             .active-users{
                 width: 229px;
                 padding: 0px 8px;
+                border-left: 1px solid grey;
             }
     
             .chat-window{

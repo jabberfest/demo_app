@@ -8,11 +8,16 @@ import * as channelActions from '../actions/channel_message';
 
 
 // Selectors
-import { getActiveChannel, getActiveChannelMessages } from '../reducers/index';
+import { 
+    getActiveChannel, 
+    getActiveChannelMessages,
+    getActiveChannelOnlineUsers } from '../reducers/index';
 
 // Views
 import Message from './message';
 import CustomScroll from 'react-custom-scroll';
+import ActiveUsers from './active_users';
+import OnlineUsers from '../reducers/online_user';
 
 class ChatView extends React.Component{
     constructor(){
@@ -23,7 +28,8 @@ class ChatView extends React.Component{
         const {
             activeChannel, 
             createChannelMessage,
-            channelMessages
+            channelMessages,
+            onlineUsers
         } = this.props;
         
         let input;
@@ -74,7 +80,7 @@ class ChatView extends React.Component{
                     </div>
 
                     <div className="active-users">
-                        RightNaV
+                        <ActiveUsers users={onlineUsers} />
                     </div>
                 </div>
            </div>
@@ -96,7 +102,8 @@ ChatView.defaultProps = {
 const mapStateToProps = (state) => {
     return {
        activeChannel: getActiveChannel(state),
-       channelMessages: getActiveChannelMessages(state)
+       channelMessages: getActiveChannelMessages(state),
+       onlineUsers: getActiveChannelOnlineUsers(state)
     };
 }
 
