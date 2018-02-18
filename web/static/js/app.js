@@ -6,6 +6,7 @@
 // explicitly imported. The only exception are files
 // in vendor, which are never wrapped in imports and
 // therefore are always executed.
+import "babel-polyfill";
 
 // Import dependencies
 //

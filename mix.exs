@@ -41,7 +41,8 @@ defmodule Demo.Mixfile do
      {:ueberauth, "~> 0.4" },
      {:ueberauth_facebook, "~> 0.5"},
      {:guardian, "~> 1.0"},
-     {:phoenix_gon, "~> 0.3.2"},
+     #{:phoenix_gon, "~> 0.3.2"},
+     {:phoenix_gon, path: "/home/fernando/Elixir/phoenix_gon"},
      {:poison, "2.2.0", override: true},
      {:phoenix_jsroutes, "~> 0.0.4"}
     ]

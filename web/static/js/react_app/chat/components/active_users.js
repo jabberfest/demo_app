@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 const ActiveUsers = ({users}) => {
     return (        
         <div>
-            Active Users
+            {users.length} Active Users
             {
                 users.map((user)=> 
                     <div key={user.id}>

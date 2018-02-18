@@ -131,25 +131,28 @@ main > #root, #root > div, #root > div > .chat-layout  {
             .header{
                 padding: 8px 0px;
                 border-bottom: 1px solid grey;
+                flex-grow:0;
             }
 
             .chat-area{
                 display: flex;
-                flex-grow: 1;
+                flex: 1 0 0; 
 
                 .chat-window{
                     display: flex;
                     flex-direction: column;
 
                     .messages{
-                        flex: 1;
+                        flex: 1 0 0;
                         min-height: 0;
                         min-width: 0;
+                        flex-wrap: nowrap;
+
 
                         .message{
                             padding: 10px 0px;
                             display: flex;
-
+              
                             .avatar-img{
                                 padding-right: 10px;
                                 img{
@@ -157,8 +160,8 @@ main > #root, #root > div, #root > div > .chat-layout  {
                                 }
                             }
 
-                            span{
-                                word-break: break-word;
+                            div{
+                                word-break: break-all;
                             }
                         }
 
@@ -169,7 +172,7 @@ main > #root, #root > div, #root > div > .chat-layout  {
                     }
     
                     .message-input{
-                        height: 54px;
+                        flex: 0 0 54px;
                     }
                 }
             }
