@@ -48,7 +48,7 @@ class LeftNav extends React.Component{
                 </div>
 
                 <div className="col-8 current-user-name">
-                    <span>{currentUser.name}</span>
+                    <span>{currentUser.name.split(" ")[0]}</span>
                 </div>                 
             </div>
 

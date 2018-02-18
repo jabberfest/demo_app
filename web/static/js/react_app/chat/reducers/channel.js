@@ -8,6 +8,36 @@ const channelList = (state= {}, action) => {
             return {...state, ...action.response.entities.channels}
         case 'FETCH_CHANNELS_SUCCESS':
             return {...action.response.entities.channels};
+        case 'CHANNEL_MESSAGE_RECEIVED':
+            const {channelId, activeChannelId} = action.response
+
+            //If message is for current channel don't increment unread count
+            if(activeChannelId == channelId){
+                return state;
+            }else{
+                const newState = {...state}
+
+                // Dup channel
+                newState[channelId] = {...newState[channelId]}
+
+                // If initial count not set, set it, otherwise increment by 1
+                if(isNil(newState[channelId].unreadCount)){
+                    newState[channelId].unreadCount = 1
+                }
+                else{
+                    newState[channelId].unreadCount++
+                }
+                return newState
+            }
+        case 'SELECT_CHANNEL':
+            const id = action.response
+            const newState = {...state}
+
+            // Dup channel and reset count for current channel
+            newState[id] = {...newState[id]}
+            newState[id].unreadCount = 0
+            
+            return newState;
         default:
             return state;
     }

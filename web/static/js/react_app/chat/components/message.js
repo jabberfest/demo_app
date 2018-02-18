@@ -17,7 +17,7 @@ const Message = ({avatar, name, message}) => {
             </div>
 
             <div className="message-content" >
-                <h5>{name}</h5>
+                <h5>{name.split(" ")[0]}</h5>
                 <div><span>{message}</span></div>
             </div>
         </div>

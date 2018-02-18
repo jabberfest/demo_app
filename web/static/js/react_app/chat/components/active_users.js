@@ -10,7 +10,8 @@ const ActiveUsers = ({users}) => {
             {
                 users.map((user)=> 
                     <div key={user.id}>
-                        <img height="28" width="28" src={""+user.avatar}/> {user.name}
+                        <img height="28" width="28" 
+                        src={""+user.avatar}/> {user.name.split(" ")[0]}
                     </div>
                 )
             }        

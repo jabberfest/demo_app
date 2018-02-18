@@ -71,6 +71,12 @@ main > #root, #root > div, #root > div > .chat-layout  {
                         &.active{
                             background-color: #3EB890;
                         }
+
+                        span {
+                            float: right;
+                            font-size: 100%;
+                            float: right;
+                        }
                     }
                 }
             }

@@ -17,7 +17,13 @@ const ChannelItem = ({onClick, channel, activeChannelId}) => {
     const active = activeChannelId == id;
     const classStr = active ? 'active' : '';
         
-    return (<li className={classStr} onClick={onClickHandler}># {channel.name}</li>);
+    let unreadCount = channel.unreadCount > 0 ? <span className="badge badge-danger">{channel.unreadCount}</span> : null
+
+    return (
+        <li className={classStr} onClick={onClickHandler}>
+            # {channel.name} {unreadCount}
+        </li>
+    );
 }
 
 ChannelItem.propTypes = {

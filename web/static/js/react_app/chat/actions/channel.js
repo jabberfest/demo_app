@@ -7,7 +7,11 @@ import {Presence} from "phoenix"
 
 
 // Selectors
-import { getChannelIds, getCurrentUserId } from '../reducers/index';
+import { 
+    getChannelIds, 
+    getCurrentUserId,
+    getActiveChannelId
+} from '../reducers/index';
 
 
 export const addChannel = () => ({
@@ -107,7 +111,8 @@ export const subscribeToChannels = () => (dispatch, getState) => {
                 response: {
                     channelMessage: normalize(payload, schema.channelMessage), 
                     channelId: id,
-                    currentUserId: currentUserId
+                    currentUserId: currentUserId,
+                    activeChannelId: getActiveChannelId(getState())
                 }
             }) 
         });
