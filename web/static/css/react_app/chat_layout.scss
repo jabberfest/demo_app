@@ -5,6 +5,7 @@ main > #root, #root > div, #root > div > .chat-layout  {
     height: 100%;
 }
 
+
 .chat-layout{
     border-collapse: collapse;
     width: 100%;
@@ -19,18 +20,34 @@ main > #root, #root > div, #root > div > .chat-layout  {
         width: 220px;
         min-width: 220px;
         background-color: #323440;
+        display:flex;
+        flex-direction: column;
         
         .current-user-container{
             margin-top:20px;
+            flex: 0 0 auto;
 
-            img{
-                border-radius: 4px;
+            display: flex;
+            align-items: center;
+
+            .avatar{
+                flex: 0 0 auto;
+                
+                img{
+                    border-radius: 4px;
+                }
             }
 
-            .current-user-name > span{
-                font-size: 0.9rem;
-                color: white;
-                font-weight: bold;
+
+            .current-user-name{
+                flex: 1 0 auto;
+
+                text-align: center;
+                & > span{
+                    font-size: 0.9rem;
+                    color: white;
+                    font-weight: bold;
+                }
             }
         }
 
@@ -39,8 +56,19 @@ main > #root, #root > div, #root > div > .chat-layout  {
 
             font-size: 1.2rem;
             color: white;
+            flex: 1 0 0;
+            flex-wrap: nowrap;
+
+            display: flex;
+            flex-direction: column; 
 
             .channel-title{
+                flex: 0 0 auto;
+
+                .col-8 span{
+                    padding-left: 8px;
+                }
+
                 .add-channel{
                     text-align: center;
                     font-weight: bolder;
@@ -52,11 +80,20 @@ main > #root, #root > div, #root > div > .chat-layout  {
             }
 
             .channel-list{
+                display: flex;
+                flex: 1 0 auto;
+                flex-wrap: nowrap;
+
                 margin-top:20px;
                 font-size: 1.0rem;
 
                 &>div{
                     padding:0px;
+                }
+
+                .col-12{
+                    flex: 1 0 auto;
+                    flex-wrap: nowrap;
                 }
 
                 ul{
@@ -99,8 +136,8 @@ main > #root, #root > div, #root > div > .chat-layout  {
         .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, 
         .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, 
         .col-xl-12, .col-xl, .col-xl-auto {
-            padding-right: 5px;
-            padding-left: 5px; 
+            padding-right: 0px;
+            padding-left: 0px; 
         }
     }
 
@@ -171,9 +208,7 @@ main > #root, #root > div, #root > div > .chat-layout  {
                             }
                         }
 
-                        .inner-handle{
-                            background-color: rgba(206,206,212,0.75);
-                        }
+
 
                     }
     
@@ -200,3 +235,6 @@ main > #root, #root > div, #root > div > .chat-layout  {
     }
 }
 
+.inner-handle{
+    background-color: rgba(206,206,212,0.75) !important;
+}

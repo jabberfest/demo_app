@@ -8,17 +8,20 @@ import 'css/react_app/chat_layout.scss';
 
 
 const ChannelHeader = ({onAddChannelClick}) => (
-    <div className="channel-title row">
-        <div className="col-8">
-            <span>Channels</span>
+    <div className="channel-title container">
+        <div className="row">
+            <div className="col-8">
+                <span>Channels</span>
+            </div>
+
+            <div 
+                className="col-4 add-channel" 
+                onClick = {onAddChannelClick}
+            >
+                <span>+</span>
+            </div>
         </div>
 
-        <div 
-            className="col-4 add-channel" 
-            onClick = {onAddChannelClick}
-        >
-            <span>+</span>
-        </div>
     </div>
 )
 

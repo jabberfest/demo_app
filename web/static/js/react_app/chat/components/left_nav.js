@@ -12,7 +12,6 @@ import * as channelActions from '../actions/channel';
 
 import { getChannels, getActiveChannelId, getCurrentUser } from '../reducers/index';
 
-
 class LeftNav extends React.Component{
     constructor(){
         super();
@@ -42,36 +41,36 @@ class LeftNav extends React.Component{
 
         return (
             <div className="left-container container">
-            <div className="current-user-container row">
-                <div className="col-4">
-                    <img height="50" width="50"  src={""+currentUser.avatar}/>
+                <div className="current-user-container">
+                    <div className="avatar">
+                        <img height="50" width="50"  src={""+currentUser.avatar}/>
+                    </div>
+
+                    <div className="current-user-name">
+                        <span>{currentUser.name.split(" ")[0]}</span>
+                    </div>                 
                 </div>
 
-                <div className="col-8 current-user-name">
-                    <span>{currentUser.name.split(" ")[0]}</span>
-                </div>                 
-            </div>
+                <div className="channel-container row">
+                    <ChannelHeader onAddChannelClick = { addChannel }/>
 
-            <div className="channel-container">
-                <ChannelHeader onAddChannelClick = { addChannel }/>
-
-                <div className="channel-list row">
-                    <div className="col-12">
-                        <ul>
-                            {
-                                channels.map((channel)=> 
-                                    <ChannelItem 
-                                        key={channel.id} 
-                                        onClick={selectChannel} 
-                                        channel={channel}
-                                        activeChannelId={activeChannelId} 
-                                    />)
-                            }
-                        </ul>
+                    <div className="channel-list">                
+                            <div className="col-12">
+                                <ul>
+                                    {
+                                        channels.map((channel)=> 
+                                            <ChannelItem 
+                                                key={channel.id} 
+                                                onClick={selectChannel} 
+                                                channel={channel}
+                                                activeChannelId={activeChannelId} 
+                                            />)
+                                    }
+                                </ul>
+                            </div>
                     </div>
                 </div>
             </div>
-        </div>
         )
     }
 
