@@ -7,6 +7,7 @@ const modal = (state = {
     switch (action.type) {
         case 'ADD_CHANNEL_SUCCESS':
         case 'CANCEL_ADD_CHANNEL':
+        case '@@router/LOCATION_CHANGE':
             return {...state, visible: false, errors: {}};
         case 'ADD_CHANNEL':
             return {...state, visible: true, errors: {}};

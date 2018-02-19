@@ -6,11 +6,14 @@ import socket from "js/socket";
 import {Presence} from "phoenix"
 
 
+import { push } from 'react-router-redux';
+
 // Selectors
 import { 
     getChannelIds, 
     getCurrentUserId,
-    getActiveChannelId
+    getActiveChannelId,
+    getChannel
 } from '../reducers/index';
 
 
@@ -154,7 +157,12 @@ export const fetchChannels = () => (dispatch) => {
 }
 
 
-export const selectChannel= (id, e) => ({
-    type: 'SELECT_CHANNEL',
-    response: id
-});
+export const selectChannel= (id, e) => (dispatch) => {
+    // Push updated url
+    dispatch(push(`/react_app/channel/${id}`));
+    
+    dispatch({
+        type: 'SELECT_CHANNEL',
+        response: id
+    })
+};

@@ -15,7 +15,8 @@ import {
     getModalVisible, 
     getModalErrors, 
     getActiveChannelId,
-    getFetchedChannels} from '../reducers/index';
+    getFetchedChannels,
+    getActiveChannel} from '../reducers/index';
 
 // Actions
 import * as channelActions from '../actions/channel';
@@ -100,7 +101,8 @@ ChatLayout.propTypes = {
     modalVisible: PropTypes.bool.isRequired,
     modalErrors: PropTypes.object.isRequired,
     cancelAddChannel: PropTypes.func.isRequired,
-    activeChannel: PropTypes.number
+    activeChannelId: PropTypes.number,
+    activeChannel: PropTypes.object
 }
 
 ChatLayout.defaultProps = {
@@ -113,6 +115,7 @@ const mapStateToProps = (state) => {
         modalVisible: getModalVisible(state),
         modalErrors: getModalErrors(state),
         activeChannelId: getActiveChannelId(state),
+        activeChannel: getActiveChannel(state),
         fetchedChannels: getFetchedChannels(state)
     };
 }

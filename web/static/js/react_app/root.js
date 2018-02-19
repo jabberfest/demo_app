@@ -4,12 +4,12 @@ import ReactDOM from 'react-dom';
 //import Login from './login/components/login';
 import ChatLayout from './chat/components/chat_layout';
 
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-
 import { createStore, combineReducers } from 'redux';
 import { Provider, connect } from 'react-redux';
 
-import configureStore from './configureStore';
+import { configureStore, history} from './configureStore';
+import { ConnectedRouter } from 'react-router-redux';
+import { Route } from 'react-router'
 
 import 'css/react_app/components/modal.scss'
 
@@ -18,11 +18,9 @@ const store = configureStore();
 
 ReactDOM.render(
     <Provider store={store} >
-        <BrowserRouter>
-            <Switch>
-                <Route path='/' component={ChatLayout} />
-            </Switch>
-        </BrowserRouter>
+        <ConnectedRouter history={history}>
+            <Route path='/' component={ChatLayout} />
+        </ConnectedRouter>
     </Provider>,
     document.getElementById('root')
 )

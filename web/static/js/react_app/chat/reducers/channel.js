@@ -58,6 +58,9 @@ const activeChannel = (state= null, action) => {
     switch (action.type) {
         case 'SELECT_CHANNEL':
             return action.response;
+        case '@@router/LOCATION_CHANGE':
+            const splitPath = action.payload.pathname.split('channel/')
+            return isNil(splitPath[1]) ? null : parseInt(splitPath[1])
         default:
             return state;
     }
@@ -99,7 +102,8 @@ export const getActiveChannelId = (state) => {
 }
 
 export const getActiveChannel = (state) => {
-    return isNil(state.activeChannel) ? state.activeChannel : state.channelList[state.activeChannel];
+    const channel = state.channelList[state.activeChannel];
+    return isNil(channel) ? {} : channel;
 }
 
 export const getChannel = (state, id) => {

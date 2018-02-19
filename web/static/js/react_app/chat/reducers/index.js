@@ -8,17 +8,20 @@ import onlineUsers, * as fromOnlineUser from '../reducers/online_user';
 import modal, * as fromModal from '../reducers/modal';
 
 
-// Combine Reducers
-const demoApp = combineReducers({
+/* 
+ * Note: We don't call combine reducers here
+ * since we want them combined at the root level
+ * with the react-router reducer in configureStore.js
+*/
+const reducers = {
     current_user,
     channels,
     modal,
     channelMessages,
     onlineUsers
-});
+};
 
-
-export default demoApp;
+export default reducers;
 
 // Selector functions to access State tree
 export const getCurrentUser = (state) => {
@@ -51,6 +54,10 @@ export const getActiveChannelId = (state) => {
 
 export const getActiveChannel = (state) => {
     return fromChannel.getActiveChannel(state.channels);
+}
+
+export const getChannel = (state, id) => {
+    return fromChannel.getChannel(state.channels, id);
 }
 
 export const getFetchedChannels = (state) => {
