@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+//Utility
+import { isEmpty } from 'lodash';
+
 // Views
 import LeftNav from './left_nav';
 import Modal from './modal';
@@ -16,6 +19,7 @@ import {
     getModalErrors, 
     getActiveChannelId,
     getFetchedChannels,
+    getChannels,
     getActiveChannel} from '../reducers/index';
 
 // Actions
@@ -63,9 +67,13 @@ class ChatLayout extends React.Component{
             modalErrors,
             cancelAddChannel,
             createAddChannel,
-            activeChannelId
+            activeChannelId,
+            channels
         } = this.props;
 
+
+        const emptyContent = isEmpty(channels) ? "Create a channel to join" :
+            "Select a channel"
 
         return (
             <div>
@@ -74,7 +82,7 @@ class ChatLayout extends React.Component{
 
                     <div className="right-container">
                         { isNil(activeChannelId) 
-                            ? <div className="empty">Create a channel to join</div>
+                            ? <div className="empty">{emptyContent}</div>
                             : <ChannelView />
                         }
                     </div>
@@ -116,7 +124,8 @@ const mapStateToProps = (state) => {
         modalErrors: getModalErrors(state),
         activeChannelId: getActiveChannelId(state),
         activeChannel: getActiveChannel(state),
-        fetchedChannels: getFetchedChannels(state)
+        fetchedChannels: getFetchedChannels(state),
+        channels: getChannels(state)
     };
 }
 

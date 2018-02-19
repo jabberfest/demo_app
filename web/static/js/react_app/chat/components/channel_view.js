@@ -43,7 +43,7 @@ class ChatView extends React.Component{
         return (
             <div className="chat-view">
                 <div className="header">
-                    <div className="col"># { activeChannel.name }</div>
+                    <div className="col">#{ activeChannel.name }</div>
                 </div>
                 
                 <div className="chat-area">

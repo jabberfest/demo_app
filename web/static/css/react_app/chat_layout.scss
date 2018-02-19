@@ -173,8 +173,12 @@ main > #root, #root > div, #root > div > .chat-layout  {
 
             .header{
                 padding: 8px 0px;
-                border-bottom: 1px solid grey;
+                border-bottom: 1px solid #e8e8e8;
                 flex-grow:0;
+
+                .col{
+                    font-weight: bold;
+                }
             }
 
             .chat-area{
@@ -195,7 +199,14 @@ main > #root, #root > div, #root > div > .chat-layout  {
                         .message{
                             padding: 10px 0px;
                             display: flex;
-              
+                            color: #2c2d30;
+
+                            h5{
+                                font-size: .95rem;
+                                font-weight: bold;
+                                margin-bottom: 0px;
+                            }
+
                             .avatar-img{
                                 padding-right: 10px;
                                 img{
@@ -205,6 +216,8 @@ main > #root, #root > div, #root > div > .chat-layout  {
 
                             div{
                                 word-break: break-all;
+                                word-break: break-word;
+                                word-wrap: break-word;
                             }
                         }
 
@@ -221,7 +234,28 @@ main > #root, #root > div, #root > div > .chat-layout  {
             .active-users{
                 width: 229px;
                 padding: 0px 8px;
-                border-left: 1px solid grey;
+                border-left: 1px solid #e8e8e8;
+
+                .active-user-count{
+                    margin-top:10px;
+                }
+
+                .user{
+                    margin-top:8px;
+
+                    img{
+                        border-radius: 3px;
+                    }
+
+                    span{
+                        vertical-align: middle;
+                        padding-left: 8px;
+                        font-weight: bold;
+                        font-size: .9rem;
+                        color: #2c2d30;
+                    }
+                }
+
             }
     
             .chat-window{
