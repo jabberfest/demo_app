@@ -1,4 +1,4 @@
 <div id="root"></div>
 
-<link rel="stylesheet" type="text/css" href="<%= static_path(@conn, "/css/main.css") %>"></script>
-<script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+<link rel="stylesheet" type="text/css" href="<%= static_url(@conn, "/css/main.css") %>"></script>
+<script src="<%= static_url(@conn, "/js/app.js") %>"></script>

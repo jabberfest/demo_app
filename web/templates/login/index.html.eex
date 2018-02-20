@@ -1,5 +1,5 @@
 
-<link rel="stylesheet" type="text/css" href="<%= static_path(@conn, "/css/main.css") %>"></script>
+<link rel="stylesheet" type="text/css" href="<%= static_url(@conn, "/css/main.css") %>"></script>
 
 <div class="modal-component">
     <div class="form-group">
