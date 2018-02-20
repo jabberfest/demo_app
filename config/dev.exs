@@ -11,7 +11,10 @@ config :demo, Demo.Endpoint,
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
-  watchers: [node: ["node_modules/webpack/bin/webpack.js", "--watch-stdin",
+  watchers: [node: ["node_modules/webpack/bin/webpack.js", 
+                    "--watch-stdin",
+                    "--config",
+                    "webpack.dev.js",
                     cd: Path.expand("../", __DIR__)]]
 
 

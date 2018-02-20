@@ -13,7 +13,7 @@ use Mix.Config
 # which you typically run after static files are built.
 config :demo, Demo.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [host: "example.com", port: 80],
+  url: [host: "www.chat-me-now.com", port: 80],
   cache_static_manifest: "priv/static/manifest.json"
 
 # Do not print debug messages in production
@@ -58,4 +58,14 @@ config :logger, level: :info
 
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
-import_config "prod.secret.exs"
+#import_config "prod.secret.exs"
+
+# Configure your database
+config :demo, Demo.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  username: System.get_env("DB_USERNAME"),
+  password: System.get_env("DB_PASSWORD"),
+  database: System.get_env("DB_DATABASE"),
+  hostname: System.get_env("DB_HOSTNAME"),
+  port: "5432",
+  pool_size: 10
