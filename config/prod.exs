@@ -14,6 +14,7 @@ use Mix.Config
 config :demo, Demo.Endpoint,
   http: [port: {:system, "PORT"}],
   url: [host: "www.chat-me-now.com", port: 80],
+  static_url: [scheme: "https", host: "dmt4k3khcxkn.cloudfront.net", port: 443],
   cache_static_manifest: "priv/static/manifest.json"
 
 # Do not print debug messages in production

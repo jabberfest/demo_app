@@ -2,8 +2,7 @@
   "repository": {},
   "license": "MIT",
   "scripts": {
-    "deploy": "brunch build --production",
-    "watch": "brunch watch --stdin"
+    "build": "webpack --config webpack.prod.js"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
