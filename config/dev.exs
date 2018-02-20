@@ -36,9 +36,9 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :demo, Demo.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "fernando",
-  password: "5pusucaz",
-  database: "demo_dev",
-  hostname: "localhost",
+  username: System.get_env("DB_USERNAME"),
+  password: System.get_env("DB_PASSWORD"),
+  database: System.get_env("DB_DATABASE"),
+  hostname: System.get_env("DB_HOSTNAME"),
   port: "5432",
   pool_size: 10
