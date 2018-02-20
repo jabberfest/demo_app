@@ -36,8 +36,9 @@ defmodule Demo.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_demo_key",
-    signing_salt: "GJQkgsL/"
-
+    encryption_salt: System.get_env("SESSION_ENCRYPTION_SALT"),
+    signing_salt: System.get_env("SESSION_SIGNING_SALT"),
+    
   plug PhoenixGon.Pipeline
   plug Demo.Router
 end
