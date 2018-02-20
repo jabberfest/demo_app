@@ -42,7 +42,7 @@ defmodule Demo.Mixfile do
      {:ueberauth_facebook, "~> 0.5"},
      {:guardian, "~> 1.0"},
      #{:phoenix_gon, "~> 0.3.2"},
-     {:phoenix_gon, path: "/home/fernando/Elixir/phoenix_gon"},
+     {:phoenix_gon, gitm: "https://github.com/jabberfest/phoenix_gon.git", branch: "bug/syntax-error-in-ie" },
      {:poison, "2.2.0", override: true},
      {:phoenix_jsroutes, "~> 0.0.4"}
     ]
