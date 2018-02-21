@@ -13,9 +13,10 @@ use Mix.Config
 # which you typically run after static files are built.
 config :demo, Demo.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [host: "www.chat-me-now.com", port: 80],
+  url: [host: "www.chat-me-now.com", scheme: "https", port: 443],
   static_url: [scheme: "https", host: "dmt4k3khcxkn.cloudfront.net", port: 443],
-  cache_static_manifest: "priv/static/manifest.json"
+  cache_static_manifest: "priv/static/manifest.json",
+  check_origin: ["https://www.chat-me-now.com","https://chat-me-now.com"]
 
 # Do not print debug messages in production
 config :logger, level: :info
