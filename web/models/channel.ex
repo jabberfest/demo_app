@@ -13,8 +13,9 @@ defmodule Demo.Channel do
         struct
         |> cast(params, [:name])
         |> validate_required([:name])
-        |> validate_length(:name, min: 0, max: 22)
+        |> validate_length(:name, min: 0, max: 14)
         |> validate_format(:name, ~r/^[^.\s]+$/, message: "must not contain spaces or periods" )
+        |> validate_format(:name, ~r/^[a-z0-9]+$/, message: "must be lowercase letters or numbers" )
         |> unsafe_validate_unique([:name], Demo.Repo)
         |> unique_constraint(:name)
     end

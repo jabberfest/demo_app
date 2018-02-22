@@ -29,7 +29,7 @@ export const cancelAddChannel = () => ({
 });
 
 export const createAddChannel = (text) => (dispatch) => {
-    const data = {channel: {name: text}};
+    const data = {channel: {name: text.toLowerCase()}};
 
     /**
      * @todo Refactor into utility method in api

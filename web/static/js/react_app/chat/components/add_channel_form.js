@@ -32,7 +32,7 @@ const AddChannelForm = ({onCancelClick, onCreateClick, errors}) => {
                     />
 
                     <small id="channelHelp" className="form-text text-muted">
-                        Names must be lowercase, without spaces or periods, and shorter than 22 characters.
+                        Names must be lowercase, without spaces or periods, and shorter than 14 characters.
                     </small>
 
                     
