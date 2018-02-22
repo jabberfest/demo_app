@@ -113,7 +113,12 @@ main > #root, #root > div, #root > div > .chat-layout  {
                             float: right;
                             font-size: 100%;
                             float: right;
+
+                            &.badge-danger{
+                                margin-left: 4px;
+                            }
                         }
+                        
                     }
                 }
             }

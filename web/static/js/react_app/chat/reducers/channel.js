@@ -3,9 +3,16 @@ import { isNil } from 'lodash';
 
 // Reducers
 const channelList = (state= {}, action) => {
+    let newState;
+    
     switch (action.type) {
         case 'CHANNEL_ADDED_RECEIVED':
-            return {...state, ...action.response.entities.channels}
+            const {result} = action.response
+        
+            newState = {...state, ...action.response.entities.channels}
+            newState[result].isNew = true;
+            
+            return newState
         case 'FETCH_CHANNELS_SUCCESS':
             return {...action.response.entities.channels};
         case 'CHANNEL_MESSAGE_RECEIVED':
@@ -31,11 +38,12 @@ const channelList = (state= {}, action) => {
             }
         case 'SELECT_CHANNEL':
             const id = action.response
-            const newState = {...state}
+            newState = {...state}
 
             // Dup channel and reset count for current channel
             newState[id] = {...newState[id]}
             newState[id].unreadCount = 0
+            newState[id].isNew = false
             
             return newState;
         default:

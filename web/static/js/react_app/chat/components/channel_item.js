@@ -18,10 +18,11 @@ const ChannelItem = ({onClick, channel, activeChannelId}) => {
     const classStr = active ? 'active' : '';
         
     let unreadCount = channel.unreadCount > 0 ? <span className="badge badge-danger">{channel.unreadCount}</span> : null
+    let isNew = channel.isNew ?  <span className="badge badge-secondary">New</span> : null
 
     return (
-        <li className={classStr} onClick={onClickHandler}>
-            # {channel.name} {unreadCount}
+        <li className={"channel-item "+classStr} onClick={onClickHandler}>
+            # {channel.name} {unreadCount} {isNew}
         </li>
     );
 }
