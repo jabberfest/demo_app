@@ -40,7 +40,7 @@ class LeftNav extends React.Component{
 
 
         return (
-            <div className="left-container container">
+            <div className="left-container container-fluid ">
                 <div className="current-user-container">
                     <div className="avatar">
                         <img height="50" width="50"  src={""+currentUser.avatar}/>

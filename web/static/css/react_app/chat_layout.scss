@@ -1,12 +1,25 @@
 @import "node_modules/react-custom-scroll/dist/customScroll";
 
 html, body, body > div, body > div > main, 
-main > #root, #root > div, #root > div > .chat-layout  {
+main > #root, #root > div,   {
     height: 100%;
 }
 
+#root > div{
+    overflow-y: auto;
+}
 
 .chat-layout{
+    height: 200%;
+
+    @media (min-width: 768px){
+        &{
+            height: 100%;
+        }
+    }
+
+    margin: 0px 0px;
+
     border-collapse: collapse;
     width: 100%;
     display: flex;
@@ -16,9 +29,17 @@ main > #root, #root > div, #root > div > .chat-layout  {
         margin: 0px;
     }
 
+
     .left-container{
-        width: 220px;
-        min-width: 220px;
+        
+        @media (min-width: 768px){
+            &{
+                width: 220px;
+                min-width: 220px;
+            }
+        }
+  
+
         background-color: #323440;
         display:flex;
         flex-direction: column;
