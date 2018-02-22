@@ -16,6 +16,9 @@ import {
     getChannel
 } from '../reducers/index';
 
+//Util
+import { isNull } from 'util';
+
 
 export const addChannel = () => ({
     type: 'ADD_CHANNEL'
@@ -51,7 +54,7 @@ export const createAddChannel = (text) => (dispatch) => {
     })
 }
 
-export const subscribeToChannelList = () => (dispatch) => {
+export const subscribeToChannelList = () => (dispatch, getState) => {
     const roomListChannel = socket.channel("room-list:lobby",{})
 
     roomListChannel.join().
@@ -62,16 +65,24 @@ export const subscribeToChannelList = () => (dispatch) => {
         })
     
     roomListChannel.on("new_channel", payload =>{
+        const channel = normalize(payload, schema.channel)
+        
         dispatch({
             type: "CHANNEL_ADDED_RECEIVED",
-            response: normalize(payload, schema.channel)
+            response: channel
         })
+
+        subscribeToChannelsHelper(dispatch, getState, channel.result);
     })
 }
 
 export const subscribeToChannels = () => (dispatch, getState) => {
+    subscribeToChannelsHelper(dispatch, getState);
+}
+
+const subscribeToChannelsHelper = (dispatch, getState, id=null) => {
     const state = getState()
-    const channelIds = getChannelIds(state)
+    const channelIds = isNull(id) ? getChannelIds(state) : [id]
     const currentUserId = getCurrentUserId(state)
 
     const dispatchOnlineUsers = (channelId, presences) => {

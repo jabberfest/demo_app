@@ -39,10 +39,11 @@ defmodule Demo.Mixfile do
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
      {:ueberauth, "~> 0.4" },
-     {:ueberauth_facebook, "~> 0.5"},
+     #{:ueberauth_facebook, "~> 0.5"},
+     {:ueberauth_facebook, git: "https://github.com/jabberfest/ueberauth_facebook.git", branch: "feature/allow-for-user-image-scheme"},
      {:guardian, "~> 1.0"},
      #{:phoenix_gon, "~> 0.3.2"},
-     {:phoenix_gon, gitm: "https://github.com/jabberfest/phoenix_gon.git", branch: "bug/syntax-error-in-ie" },
+     {:phoenix_gon, git: "https://github.com/jabberfest/phoenix_gon.git", branch: "bug/syntax-error-in-ie" },
      {:poison, "2.2.0", override: true},
      {:phoenix_jsroutes, "~> 0.0.4"}
     ]
