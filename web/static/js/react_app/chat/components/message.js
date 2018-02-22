@@ -8,7 +8,7 @@ const Message = ({avatar, name, message}) => {
     /**
      * @todo Refactor into url helper
      */
-    const avatarUrl = `http://graph.facebook.com/${avatar}/picture?type=square`
+    const avatarUrl = `https://graph.facebook.com/${avatar}/picture?type=square`
 
     return (        
         <div className="message">
