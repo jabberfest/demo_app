@@ -3,22 +3,22 @@
 
 <div class="modal-component">
     <div class="container">
-        <div class="row">
-            <div class="col-sm">A basic chat application built in React/Redux and Elixir/Phoenix</div>
+        <div class="row justify-content-sm-center">
+            <div class="col-sm-auto">A basic chat application built in React/Redux and Elixir/Phoenix</div>
         </div>
 
         <br/>
 
-        <div class="row">
-            <div class="col-sm text-center">
+        <div class="row justify-content-sm-center">
+            <div class="col-sm-auto">
                 <button type="button" class="btn btn-primary" onClick='window.location="/auth/facebook"'>Login with Facebook</button>
             </div>
         </div>
 
         </br>
 
-        <div class="row">
-            <div class="col-sm text-center">
+        <div class="row justify-content-sm-center">
+            <div class="col-sm-auto">
                 <span>Fernando Arias Jr. © 2018</span>
             </div>
         </div>
