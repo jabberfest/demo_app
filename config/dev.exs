@@ -1,5 +1,9 @@
 use Mix.Config
 
+
+config :demo, :environment, :dev
+config :demo, Demo.QueryParamCache, active: true
+
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #

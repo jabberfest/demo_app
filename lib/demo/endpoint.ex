@@ -7,9 +7,19 @@ defmodule Demo.Endpoint do
   #
   # You should set gzip to true if you are running phoenix.digest
   # when deploying your static files in production.
-  plug Plug.Static,
-    at: "/", from: :demo, gzip: false,
-    only: ~w(css fonts images js favicon.ico robots.txt privacy.html)
+  if Application.get_env(:demo, Demo.QueryParamCache) |> Keyword.get(:active) do
+    plug Plug.Static,
+      at: "/", from: :demo, gzip: false,
+      only: ~w(css fonts images js favicon.ico robots.txt privacy.html)
+  else 
+      plug Plug.Static,
+        at: "/", from: :demo, gzip: true,
+        only: ~w(css fonts images js favicon.ico robots.txt privacy.html),
+        # This insures no waiting for 304 responses since we bust cache with file digset 
+        cache_control_for_etags: false,
+        cache_control_for_vsn_requests: false      
+  end
+  
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
