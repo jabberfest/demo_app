@@ -10,11 +10,12 @@ main > #root, #root > div,   {
 }
 
 .chat-layout{
-    height: 200%;
+    flex-direction: column;
 
     @media (min-width: 768px){
         &{
             height: 100%;
+            flex-direction: row;
         }
     }
 
@@ -77,11 +78,17 @@ main > #root, #root > div,   {
 
             font-size: 1.2rem;
             color: white;
-            flex: 1 0 0;
-            flex-wrap: nowrap;
+            flex: 0 0 auto ;
+            flex-wrap: wrap;
 
             display: flex;
             flex-direction: column; 
+
+            @media (min-width: 768px){
+                &{
+                    flex: 1 0 auto;
+                }
+            }
 
             .channel-title{
                 flex: 0 0 auto;
@@ -102,11 +109,22 @@ main > #root, #root > div,   {
 
             .channel-list{
                 display: flex;
-                flex: 1 0 auto;
-                flex-wrap: nowrap;
+                flex: 0 0 auto;
+                flex-wrap: wrap;
 
                 margin-top:20px;
                 font-size: 1.0rem;
+
+                flex-direction: column;
+
+
+
+                @media (min-width: 768px){
+                    &{
+                        flex: 1 0 auto;
+                    }
+                }
+                
 
                 &>div{
                     padding:0px;
@@ -123,6 +141,14 @@ main > #root, #root > div,   {
                     li{
                         margin: 0px 0px;
                         padding: 10px 8px; 
+                        text-align: center;
+
+                        @media (min-width: 768px){
+                            &{
+                                text-align: initial;
+                            }
+                        }
+
                         &:hover{
                             background-color:#3b5998;
                         }
@@ -170,6 +196,16 @@ main > #root, #root > div,   {
     .right-container{
         background-color:white;
         width: inherit;
+        padding: 0px;
+
+        display: flex;
+        flex-direction: column;
+
+        @media (max-width: 768px){
+            &{
+                flex: 1 1 auto;
+            }
+        }
 
         &.empty{
             display: flex;  
@@ -193,14 +229,13 @@ main > #root, #root > div,   {
 
         .chat-view{
             display: flex;
-            height:100%;
             flex-direction: column;
-
+            flex: 1 0 auto;
 
             .header{
                 padding: 8px 0px;
                 border-bottom: 1px solid #e8e8e8;
-                flex-grow:0;
+                flex: 0 1 auto;
 
                 .col{
                     font-weight: bold;
@@ -209,18 +244,42 @@ main > #root, #root > div,   {
 
             .chat-area{
                 display: flex;
-                flex: 1 0 0; 
+                flex: 1 0 auto; 
+
+                flex-direction: column;
+
+                //min-height: 800px; 
+
+                @media (min-width: 768px){
+                    &{
+                        flex-direction: row;
+                        min-height: 0px;
+                    }
+                }
 
                 .chat-window{
                     display: flex;
                     flex-direction: column;
+                    flex: 1 0 auto;
+
+                    @media (min-width: 768px){
+                        &{
+                            flex: 1 1 0;
+                        }
+                    }
 
                     .messages{
                         flex: 1 0 0;
                         min-height: 0;
                         min-width: 0;
                         flex-wrap: nowrap;
+                        min-height: 200px;
 
+                        @media (min-width: 768px){
+                            &{
+                                min-height: 0px;
+                            }
+                        }
 
                         .message{
                             padding: 10px 0px;
