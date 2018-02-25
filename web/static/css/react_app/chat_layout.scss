@@ -10,6 +10,7 @@ main > #root, #root > div,   {
 }
 
 .chat-layout{
+    height:100%;
     flex-direction: column;
 
     @media (min-width: 768px){
@@ -32,6 +33,13 @@ main > #root, #root > div,   {
 
 
     .left-container{
+        flex: 0 0 auto;
+
+        @media (min-width: 768px){
+            &{
+                flex: 0 1 auto;
+            }
+        }
         
         @media (min-width: 768px){
             &{
@@ -124,6 +132,8 @@ main > #root, #root > div,   {
                         flex: 1 0 auto;
                     }
                 }
+
+                
                 
 
                 &>div{
@@ -131,8 +141,16 @@ main > #root, #root > div,   {
                 }
 
                 .col-12{
-                    flex: 1 0 auto;
+                    flex: 1 0 48px;
+
+                    @media (min-width: 768px){
+                        &{
+                            flex: 1 0 0;
+                        }
+                    }
+
                     flex-wrap: nowrap;
+                    display:flex;
                 }
 
                 ul{
@@ -203,9 +221,10 @@ main > #root, #root > div,   {
 
         @media (max-width: 768px){
             &{
-                flex: 1 1 auto;
+                flex: 6 1 auto;
             }
         }
+        
 
         &.empty{
             display: flex;  
