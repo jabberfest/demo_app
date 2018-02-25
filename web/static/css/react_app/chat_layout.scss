@@ -9,6 +9,40 @@ main > #root, #root > div,   {
     overflow-y: auto;
 }
 
+.full-modal{
+    text-align: center;
+    
+    @media (min-width: 768px){
+        &{
+            text-align: initial;
+        }
+    }
+
+    .text-right{
+        text-align: center !important;
+
+        @media (min-width: 768px){
+            &{
+                text-align: right !important;
+            }
+        }
+    }
+
+    .form-group{
+        input, small{
+            width: 85%;
+            margin: 0 auto;
+            @media (min-width: 768px){
+                &{
+                    width:100%;
+                    margin: 0;
+                }
+            } 
+        }
+    }
+}
+
+
 .chat-layout{
     height:100%;
     flex-direction: column;
