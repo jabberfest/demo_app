@@ -92,6 +92,11 @@ main > #root, #root > div,   {
             display: flex;
             flex-direction: column; 
 
+            .container{
+                max-width: none;
+            }
+
+
             @media (min-width: 768px){
                 &{
                     flex: 1 0 auto;
@@ -174,10 +179,20 @@ main > #root, #root > div,   {
                             background-color: #3EB890;
                         }
 
+                        .channel-name{
+                            float: none;
+                        }
+
                         span {
-                            float: right;
                             font-size: 100%;
-                            float: right;
+                            float:none;
+
+                            @media (min-width: 768px){
+                                &{
+                                    text-align: initial;
+                                    float: right;
+                                }
+                            }
 
                             &.badge-danger{
                                 margin-left: 4px;
@@ -219,9 +234,11 @@ main > #root, #root > div,   {
         display: flex;
         flex-direction: column;
 
-        @media (max-width: 768px){
+        flex: 6 1 auto;
+
+        @media (min-width: 768px){
             &{
-                flex: 6 1 auto;
+                flex: 1 1 0;
             }
         }
         
@@ -249,7 +266,7 @@ main > #root, #root > div,   {
         .chat-view{
             display: flex;
             flex-direction: column;
-            flex: 1 0 auto;
+            flex: 1 0 0;
 
             .header{
                 padding: 8px 0px;
@@ -263,7 +280,7 @@ main > #root, #root > div,   {
 
             .chat-area{
                 display: flex;
-                flex: 1 0 auto; 
+                flex: 1 0 0; 
 
                 flex-direction: column;
 
@@ -331,21 +348,45 @@ main > #root, #root > div,   {
     
                     .message-input{
                         flex: 0 0 54px;
+                        
+                        >div{
+                            align-self: center;
+                        }
+
+                        .form-group{
+                            margin-bottom: 0px;
+                        }
                     }
                 }
             }
 
             .active-users{
-                width: 229px;
+                width:100%;
                 padding: 0px 8px;
                 border-left: 1px solid #e8e8e8;
+
+                display: flex;
+                flex: 0 1 78px;
+
+                @media (min-width: 768px){
+                    &{
+                        flex: 0 1 auto;
+                        width: 229px;
+                    }
+                }
+
+                >div{
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                }
 
                 .active-user-count{
                     margin-top:10px;
                 }
 
                 .user{
-                    margin-top:8px;
+                    padding-top:8px;
 
                     img{
                         border-radius: 3px;
@@ -362,9 +403,7 @@ main > #root, #root > div,   {
 
             }
     
-            .chat-window{
-                flex-grow: 1;
-            }
+
         }
     }
 
