@@ -1,7 +1,10 @@
+//$text-black: #2c2d30;
+@import "colors";
+
 .message{
     padding: 10px 0px;
     display: flex;
-    color: #2c2d30;
+    color: $text-black;
 
     h5{
         font-size: .95rem;

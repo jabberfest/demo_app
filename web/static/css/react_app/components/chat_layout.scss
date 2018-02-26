@@ -1,4 +1,5 @@
 @import "node_modules/react-custom-scroll/dist/customScroll";
+@import "colors";
 
 html, body, body > div, body > div > main, 
 main > #root, #root > div,   {
@@ -66,7 +67,7 @@ main > #root, #root > div,   {
     }
 
     .right-container{
-        background-color:white;
+        background-color:$chat-background-color;
         width: inherit;
         padding: 0px;
 
@@ -100,16 +101,16 @@ main > #root, #root > div,   {
 
             flex: 1 1 auto;
             font-size: 2.5rem;
-            color: gainsboro;
+            color: $transparent-text-color;
         }
 
     }
 
     .chat-area{
-        color:black;
+        color:$text-black;
     }
 }
 
 .inner-handle{
-    background-color: rgba(206,206,212,0.75) !important;
+    background-color: $scrollbar-color !important;
 }

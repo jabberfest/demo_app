@@ -1,7 +1,9 @@
+@import "colors";
+
 .active-users{
     width:100%;
     padding: 0px 8px;
-    border-left: 1px solid #e8e8e8;
+    border-left: 1px solid $border-grey;
 
     display: flex;
     flex: 0 1 78px;
@@ -35,7 +37,7 @@
             padding-left: 8px;
             font-weight: bold;
             font-size: .9rem;
-            color: #2c2d30;
+            color: $text-black;
         }
     }
 

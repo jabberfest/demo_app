@@ -1,3 +1,5 @@
+@import "colors";
+
 .left-container{
     flex: 0 0 auto;
 
@@ -15,7 +17,7 @@
     }
 
 
-    background-color: #323440;
+    background-color: $page-color;
     display:flex;
     flex-direction: column;
     
@@ -41,7 +43,7 @@
             text-align: center;
             & > span{
                 font-size: 0.9rem;
-                color: white;
+                color: $chat-background-color;
                 font-weight: bold;
             }
         }
@@ -51,7 +53,7 @@
         margin-top:20px;
 
         font-size: 1.2rem;
-        color: white;
+        color: $chat-background-color;
         flex: 0 0 auto ;
         flex-wrap: wrap;
 

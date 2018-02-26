@@ -1,3 +1,5 @@
+@import "colors";
+
 .chat-view{
     display: flex;
     flex-direction: column;
@@ -5,7 +7,7 @@
 
     .header{
         padding: 8px 0px;
-        border-bottom: 1px solid #e8e8e8;
+        border-bottom: 1px solid $border-grey;
         flex: 0 1 auto;
 
         .col{
@@ -18,8 +20,6 @@
         flex: 1 0 0; 
 
         flex-direction: column;
-
-        //min-height: 800px; 
 
         @media (min-width: 768px){
             &{

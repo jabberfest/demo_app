@@ -39,7 +39,10 @@ module.exports = {
                         }
                       }
                     },{
-                      loader: 'sass-loader' // compiles Sass to CSS
+                      loader: 'sass-loader', // compiles Sass to CSS
+                      options: {
+                        includePaths:[path.resolve(__dirname, './web/static/css')]
+                      }        
                     }
                   ]
                 }) 
