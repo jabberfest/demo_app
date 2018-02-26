@@ -9,6 +9,10 @@ $modal-padding: 20px;
     transform: translate(-50%, -50%);
     background-color:$modal-color;
     padding: $modal-padding;
+
+    .row.justify-content-center .col{
+      flex-basis: auto;
+    }
 }
 
 

@@ -77,10 +77,10 @@ class ChatLayout extends React.Component{
 
         return (
             <div>
-                <div className="chat-layout">
+                <div className="chat-layout row">
                     <LeftNav />
 
-                    <div className="right-container">
+                    <div className="right-container col-md">
                         { isNil(activeChannelId) 
                             ? <div className="empty">{emptyContent}</div>
                             : <ChannelView />

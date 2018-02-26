@@ -1,12 +1,61 @@
 @import "node_modules/react-custom-scroll/dist/customScroll";
 
 html, body, body > div, body > div > main, 
-main > #root, #root > div, #root > div > .chat-layout  {
+main > #root, #root > div,   {
     height: 100%;
+}
+
+#root > div{
+    overflow-y: auto;
+}
+
+.full-modal{
+    text-align: center;
+    
+    @media (min-width: 768px){
+        &{
+            text-align: left;
+        }
+    }
+
+    .text-right{
+        text-align: center !important;
+
+        @media (min-width: 768px){
+            &{
+                text-align: right !important;
+            }
+        }
+    }
+
+    .form-group{
+        input, small{
+            width: 85%;
+            margin: 0 auto;
+            @media (min-width: 768px){
+                &{
+                    width:100%;
+                    margin: 0;
+                }
+            } 
+        }
+    }
 }
 
 
 .chat-layout{
+    height:100%;
+    flex-direction: column;
+
+    @media (min-width: 768px){
+        &{
+            height: 100%;
+            flex-direction: row;
+        }
+    }
+
+    margin: 0px 0px;
+
     border-collapse: collapse;
     width: 100%;
     display: flex;
@@ -16,9 +65,24 @@ main > #root, #root > div, #root > div > .chat-layout  {
         margin: 0px;
     }
 
+
     .left-container{
-        width: 220px;
-        min-width: 220px;
+        flex: 0 0 auto;
+
+        @media (min-width: 768px){
+            &{
+                flex: 0 1 auto;
+            }
+        }
+        
+        @media (min-width: 768px){
+            &{
+                width: 220px;
+                min-width: 220px;
+            }
+        }
+  
+
         background-color: #323440;
         display:flex;
         flex-direction: column;
@@ -56,11 +120,22 @@ main > #root, #root > div, #root > div > .chat-layout  {
 
             font-size: 1.2rem;
             color: white;
-            flex: 1 0 0;
-            flex-wrap: nowrap;
+            flex: 0 0 auto ;
+            flex-wrap: wrap;
 
             display: flex;
             flex-direction: column; 
+
+            .container{
+                max-width: none;
+            }
+
+
+            @media (min-width: 768px){
+                &{
+                    flex: 1 0 auto;
+                }
+            }
 
             .channel-title{
                 flex: 0 0 auto;
@@ -81,27 +156,53 @@ main > #root, #root > div, #root > div > .chat-layout  {
 
             .channel-list{
                 display: flex;
-                flex: 1 0 auto;
-                flex-wrap: nowrap;
+                flex: 0 0 auto;
+                flex-wrap: wrap;
 
                 margin-top:20px;
                 font-size: 1.0rem;
 
+                flex-direction: column;
+
+                @media (min-width: 768px){
+                    &{
+                        flex: 1 0 auto;
+                    }
+                }
+
+                
                 &>div{
                     padding:0px;
                 }
 
                 .col-12{
-                    flex: 1 0 auto;
+                    flex: 1 0 48px;
+
+                    @media (min-width: 768px){
+                        &{
+                            flex: 1 0 0;
+                        }
+                    }
+
                     flex-wrap: nowrap;
+                    display:flex;
                 }
 
                 ul{
                     list-style: none;
                     padding: 0px;   
+                    margin-bottom: 0px;
                     li{
                         margin: 0px 0px;
                         padding: 10px 8px; 
+                        text-align: center;
+
+                        @media (min-width: 768px){
+                            &{
+                                text-align: left;
+                            }
+                        }
+
                         &:hover{
                             background-color:#3b5998;
                         }
@@ -109,10 +210,20 @@ main > #root, #root > div, #root > div > .chat-layout  {
                             background-color: #3EB890;
                         }
 
+                        .channel-name{
+                            float: none;
+                        }
+
                         span {
-                            float: right;
                             font-size: 100%;
-                            float: right;
+                            float:none;
+
+                            @media (min-width: 768px){
+                                &{
+                                    text-align: left;
+                                    float: right;
+                                }
+                            }
 
                             &.badge-danger{
                                 margin-left: 4px;
@@ -149,6 +260,19 @@ main > #root, #root > div, #root > div > .chat-layout  {
     .right-container{
         background-color:white;
         width: inherit;
+        padding: 0px;
+
+        display: flex;
+        flex-direction: column;
+
+        flex: 6 1 auto;
+
+        @media (min-width: 768px){
+            &{
+                flex: 1 1 0;
+            }
+        }
+        
 
         &.empty{
             display: flex;  
@@ -166,20 +290,20 @@ main > #root, #root > div, #root > div > .chat-layout  {
             justify-content: center;
             height: 100%;
 
+            flex: 1 1 auto;
             font-size: 2.5rem;
             color: gainsboro;
         }
 
         .chat-view{
             display: flex;
-            height:100%;
             flex-direction: column;
-
+            flex: 1 0 0;
 
             .header{
                 padding: 8px 0px;
                 border-bottom: 1px solid #e8e8e8;
-                flex-grow:0;
+                flex: 0 1 auto;
 
                 .col{
                     font-weight: bold;
@@ -190,16 +314,40 @@ main > #root, #root > div, #root > div > .chat-layout  {
                 display: flex;
                 flex: 1 0 0; 
 
+                flex-direction: column;
+
+                //min-height: 800px; 
+
+                @media (min-width: 768px){
+                    &{
+                        flex-direction: row;
+                        min-height: 0px;
+                    }
+                }
+
                 .chat-window{
                     display: flex;
                     flex-direction: column;
+                    flex: 1 0 auto;
+
+                    @media (min-width: 768px){
+                        &{
+                            flex: 1 1 0;
+                        }
+                    }
 
                     .messages{
                         flex: 1 0 0;
                         min-height: 0;
                         min-width: 0;
                         flex-wrap: nowrap;
+                        min-height: 200px;
 
+                        @media (min-width: 768px){
+                            &{
+                                min-height: 0px;
+                            }
+                        }
 
                         .message{
                             padding: 10px 0px;
@@ -232,21 +380,45 @@ main > #root, #root > div, #root > div > .chat-layout  {
     
                     .message-input{
                         flex: 0 0 54px;
+                        
+                        >div{
+                            align-self: center;
+                        }
+
+                        .form-group{
+                            margin-bottom: 0px;
+                        }
                     }
                 }
             }
 
             .active-users{
-                width: 229px;
+                width:100%;
                 padding: 0px 8px;
                 border-left: 1px solid #e8e8e8;
+
+                display: flex;
+                flex: 0 1 78px;
+
+                @media (min-width: 768px){
+                    &{
+                        flex: 0 1 auto;
+                        width: 229px;
+                    }
+                }
+
+                >div{
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                }
 
                 .active-user-count{
                     margin-top:10px;
                 }
 
                 .user{
-                    margin-top:8px;
+                    padding-top:8px;
 
                     img{
                         border-radius: 3px;
@@ -263,9 +435,7 @@ main > #root, #root > div, #root > div > .chat-layout  {
 
             }
     
-            .chat-window{
-                flex-grow: 1;
-            }
+
         }
     }
 

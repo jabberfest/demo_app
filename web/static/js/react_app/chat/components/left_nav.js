@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 
-
+// Views
 import ChannelHeader from './channel_header';
 import ChannelItem from './channel_item';
+import CustomScroll from 'react-custom-scroll';
 
 import * as channelActions from '../actions/channel';
 
@@ -40,7 +41,7 @@ class LeftNav extends React.Component{
 
 
         return (
-            <div className="left-container container">
+            <div className="left-container container-fluid ">
                 <div className="current-user-container">
                     <div className="avatar">
                         <img height="50" width="50"  src={""+currentUser.avatar}/>
@@ -54,20 +55,22 @@ class LeftNav extends React.Component{
                 <div className="channel-container row">
                     <ChannelHeader onAddChannelClick = { addChannel }/>
 
-                    <div className="channel-list">                
+                    <div className="channel-list">                      
                             <div className="col-12">
-                                <ul>
-                                    {
-                                        channels.map((channel)=> 
-                                            <ChannelItem 
-                                                key={channel.id} 
-                                                onClick={selectChannel} 
-                                                channel={channel}
-                                                activeChannelId={activeChannelId} 
-                                            />)
-                                    }
-                                </ul>
-                            </div>
+                                <CustomScroll flex="1" keepAtBottom={true}>
+                                    <ul>
+                                        {
+                                            channels.map((channel)=> 
+                                                <ChannelItem 
+                                                    key={channel.id} 
+                                                    onClick={selectChannel} 
+                                                    channel={channel}
+                                                    activeChannelId={activeChannelId} 
+                                                />)
+                                        }
+                                    </ul>
+                                </CustomScroll>
+                            </div>                   
                     </div>
                 </div>
             </div>

@@ -22,7 +22,7 @@ const ChannelItem = ({onClick, channel, activeChannelId}) => {
 
     return (
         <li className={"channel-item "+classStr} onClick={onClickHandler}>
-            # {channel.name} {unreadCount} {isNew}
+            <span className="channel-name"># {channel.name}</span> {unreadCount} {isNew}
         </li>
     );
 }
