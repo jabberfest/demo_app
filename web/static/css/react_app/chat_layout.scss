@@ -14,7 +14,7 @@ main > #root, #root > div,   {
     
     @media (min-width: 768px){
         &{
-            text-align: initial;
+            text-align: left;
         }
     }
 
@@ -164,8 +164,6 @@ main > #root, #root > div,   {
 
                 flex-direction: column;
 
-
-
                 @media (min-width: 768px){
                     &{
                         flex: 1 0 auto;
@@ -173,8 +171,6 @@ main > #root, #root > div,   {
                 }
 
                 
-                
-
                 &>div{
                     padding:0px;
                 }
@@ -195,6 +191,7 @@ main > #root, #root > div,   {
                 ul{
                     list-style: none;
                     padding: 0px;   
+                    margin-bottom: 0px;
                     li{
                         margin: 0px 0px;
                         padding: 10px 8px; 
@@ -202,7 +199,7 @@ main > #root, #root > div,   {
 
                         @media (min-width: 768px){
                             &{
-                                text-align: initial;
+                                text-align: left;
                             }
                         }
 
@@ -223,7 +220,7 @@ main > #root, #root > div,   {
 
                             @media (min-width: 768px){
                                 &{
-                                    text-align: initial;
+                                    text-align: left;
                                     float: right;
                                 }
                             }
@@ -293,6 +290,7 @@ main > #root, #root > div,   {
             justify-content: center;
             height: 100%;
 
+            flex: 1 1 auto;
             font-size: 2.5rem;
             color: gainsboro;
         }
