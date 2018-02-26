@@ -27,8 +27,8 @@ import * as channelActions from '../actions/channel';
 import * as channelMessageActions from '../actions/channel_message';
 
 //Styles
-import 'css/react_app/chat_layout.scss';
-import 'css/react_app/components/modal.scss';
+import 'css/react_app/components/chat_layout.scss';
+
 
 //lodash
 import {isNil} from 'lodash';

@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 
-import 'css/react_app/chat_layout.scss';
-
+// Styles
+import 'css/react_app/components/channel_item.scss';
 
 const ChannelItem = ({onClick, channel, activeChannelId}) => {
     const id = channel.id

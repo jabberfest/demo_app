@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 // Actions
 import * as channelActions from '../actions/channel_message';
 
-
 // Selectors
 import { 
     getActiveChannel, 
@@ -18,6 +17,9 @@ import Message from './message';
 import CustomScroll from 'react-custom-scroll';
 import ActiveUsers from './active_users';
 import OnlineUsers from '../reducers/online_user';
+
+// Styles
+import 'css/react_app/components/channel_view.scss';
 
 class ChatView extends React.Component{
     constructor(){

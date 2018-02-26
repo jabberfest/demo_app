@@ -1,0 +1,16 @@
+.channel-title{
+    flex: 0 0 auto;
+
+    .col-8 span{
+        padding-left: 8px;
+    }
+
+    .add-channel{
+        text-align: center;
+        font-weight: bolder;
+
+        &:hover{
+            background-color: #3b5998;;
+        }
+    }
+}

@@ -5,6 +5,9 @@ import PropTypes from 'prop-types';
 // Views
 import CustomScroll from 'react-custom-scroll';
 
+// Styles
+import 'css/react_app/components/active_users.scss'
+
 const ActiveUsers = ({users}) => {
     return (        
         <div>

@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
+// Styles
+import 'css/react_app/components/message.scss';
 
 const Message = ({avatar, name, message}) => {
 

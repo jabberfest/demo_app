@@ -11,8 +11,6 @@ import { configureStore, history} from './configureStore';
 import { ConnectedRouter } from 'react-router-redux';
 import { Route } from 'react-router'
 
-import 'css/react_app/components/modal.scss'
-
 
 const store = configureStore();
 

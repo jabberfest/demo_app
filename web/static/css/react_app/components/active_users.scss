@@ -1,0 +1,42 @@
+.active-users{
+    width:100%;
+    padding: 0px 8px;
+    border-left: 1px solid #e8e8e8;
+
+    display: flex;
+    flex: 0 1 78px;
+
+    @media (min-width: 768px){
+        &{
+            flex: 0 1 auto;
+            width: 229px;
+        }
+    }
+
+    >div{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .active-user-count{
+        margin-top:10px;
+    }
+
+    .user{
+        padding-top:8px;
+
+        img{
+            border-radius: 3px;
+        }
+
+        span{
+            vertical-align: middle;
+            padding-left: 8px;
+            font-weight: bold;
+            font-size: .9rem;
+            color: #2c2d30;
+        }
+    }
+
+}

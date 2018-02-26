@@ -1,0 +1,39 @@
+li.channel-item{
+    margin: 0px 0px;
+    padding: 10px 8px; 
+    text-align: center;
+
+    @media (min-width: 768px){
+        &{
+            text-align: left;
+        }
+    }
+
+    &:hover{
+        background-color:#3b5998;
+    }
+    &.active{
+        background-color: #3EB890;
+    }
+
+    .channel-name{
+        float: none;
+    }
+
+    span {
+        font-size: 100%;
+        float:none;
+
+        @media (min-width: 768px){
+            &{
+                text-align: left;
+                float: right;
+            }
+        }
+
+        &.badge-danger{
+            margin-left: 4px;
+        }
+    }
+    
+}

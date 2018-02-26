@@ -9,9 +9,14 @@ import ChannelHeader from './channel_header';
 import ChannelItem from './channel_item';
 import CustomScroll from 'react-custom-scroll';
 
+// Actions
 import * as channelActions from '../actions/channel';
 
+// Reducers
 import { getChannels, getActiveChannelId, getCurrentUser } from '../reducers/index';
+
+// Styles
+import 'css/react_app/components/left_nav.scss';
 
 class LeftNav extends React.Component{
     constructor(){

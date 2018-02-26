@@ -1,0 +1,115 @@
+@import "node_modules/react-custom-scroll/dist/customScroll";
+
+html, body, body > div, body > div > main, 
+main > #root, #root > div,   {
+    height: 100%;
+}
+
+#root > div{
+    overflow-y: auto;
+}
+
+.full-modal{
+    text-align: center;
+    
+    @media (min-width: 768px){
+        &{
+            text-align: left;
+        }
+    }
+
+    .text-right{
+        text-align: center !important;
+
+        @media (min-width: 768px){
+            &{
+                text-align: right !important;
+            }
+        }
+    }
+
+    .form-group{
+        input, small{
+            width: 85%;
+            margin: 0 auto;
+            @media (min-width: 768px){
+                &{
+                    width:100%;
+                    margin: 0;
+                }
+            } 
+        }
+    }
+}
+
+
+.chat-layout{
+    height:100%;
+    flex-direction: column;
+
+    @media (min-width: 768px){
+        &{
+            height: 100%;
+            flex-direction: row;
+        }
+    }
+
+    margin: 0px 0px;
+
+    border-collapse: collapse;
+    width: 100%;
+    display: flex;
+
+    > div {
+        border:  0px;
+        margin: 0px;
+    }
+
+    .right-container{
+        background-color:white;
+        width: inherit;
+        padding: 0px;
+
+        display: flex;
+        flex-direction: column;
+
+        flex: 6 1 auto;
+
+        @media (min-width: 768px){
+            &{
+                flex: 1 1 0;
+            }
+        }
+        
+
+        &.empty{
+            display: flex;  
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        .empty{
+            overflow-y: hidden;
+            overflow-x: hidden;
+    
+            display: flex;  
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+
+            flex: 1 1 auto;
+            font-size: 2.5rem;
+            color: gainsboro;
+        }
+
+    }
+
+    .chat-area{
+        color:black;
+    }
+}
+
+.inner-handle{
+    background-color: rgba(206,206,212,0.75) !important;
+}
