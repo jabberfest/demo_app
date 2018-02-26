@@ -1,11 +1,12 @@
 @import "colors";
+@import "common";
 
 li.channel-item{
     margin: 0px 0px;
     padding: 10px 8px; 
     text-align: center;
 
-    @media (min-width: 768px){
+    @media (min-width: $breakpoint){
         &{
             text-align: left;
         }
@@ -26,7 +27,7 @@ li.channel-item{
         font-size: 100%;
         float:none;
 
-        @media (min-width: 768px){
+        @media (min-width: $breakpoint){
             &{
                 text-align: left;
                 float: right;

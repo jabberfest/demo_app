@@ -1,15 +1,16 @@
 @import "colors";
+@import "common";
 
 .left-container{
     flex: 0 0 auto;
 
-    @media (min-width: 768px){
+    @media (min-width: $breakpoint){
         &{
             flex: 0 1 auto;
         }
     }
     
-    @media (min-width: 768px){
+    @media (min-width: $breakpoint){
         &{
             width: 220px;
             min-width: 220px;
@@ -65,7 +66,7 @@
         }
 
 
-        @media (min-width: 768px){
+        @media (min-width: $breakpoint){
             &{
                 flex: 1 0 auto;
             }
@@ -96,7 +97,7 @@
             .col-12{
                 flex: 1 0 48px;
 
-                @media (min-width: 768px){
+                @media (min-width: $breakpoint){
                     &{
                         flex: 1 0 0;
                     }

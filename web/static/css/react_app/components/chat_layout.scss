@@ -1,5 +1,6 @@
 @import "node_modules/react-custom-scroll/dist/customScroll";
 @import "colors";
+@import "common";
 
 html, body, body > div, body > div > main, 
 main > #root, #root > div,   {
@@ -13,7 +14,7 @@ main > #root, #root > div,   {
 .full-modal{
     text-align: center;
     
-    @media (min-width: 768px){
+    @media (min-width: $breakpoint){
         &{
             text-align: left;
         }
@@ -22,7 +23,7 @@ main > #root, #root > div,   {
     .text-right{
         text-align: center !important;
 
-        @media (min-width: 768px){
+        @media (min-width: $breakpoint){
             &{
                 text-align: right !important;
             }
@@ -33,7 +34,7 @@ main > #root, #root > div,   {
         input, small{
             width: 85%;
             margin: 0 auto;
-            @media (min-width: 768px){
+            @media (min-width: $breakpoint){
                 &{
                     width:100%;
                     margin: 0;
@@ -48,7 +49,7 @@ main > #root, #root > div,   {
     height:100%;
     flex-direction: column;
 
-    @media (min-width: 768px){
+    @media (min-width: $breakpoint){
         &{
             height: 100%;
             flex-direction: row;
@@ -76,7 +77,7 @@ main > #root, #root > div,   {
 
         flex: 6 1 auto;
 
-        @media (min-width: 768px){
+        @media (min-width: $breakpoint){
             &{
                 flex: 1 1 0;
             }

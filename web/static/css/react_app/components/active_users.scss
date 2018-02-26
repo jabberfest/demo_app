@@ -1,4 +1,5 @@
 @import "colors";
+@import "common";
 
 .active-users{
     width:100%;
@@ -8,7 +9,7 @@
     display: flex;
     flex: 0 1 78px;
 
-    @media (min-width: 768px){
+    @media (min-width: $breakpoint){
         &{
             flex: 0 1 auto;
             width: 229px;
