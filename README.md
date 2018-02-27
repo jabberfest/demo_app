@@ -1,6 +1,7 @@
 # Demo
 
 Live Demo at: https://chat-me-now.com
+
 Youtube Video Demo at: https://youtu.be/AOWPSpxLvDs
 
 
@@ -32,6 +33,13 @@ https://github.com/ueberauth/ueberauth_facebook/pull/40
 https://github.com/khusnetdinov/phoenix_gon/pull/15
 
 https://github.com/khusnetdinov/phoenix_gon/pull/8
+
+
+## UI Source code quick links
+https://github.com/jabberfest/demo_app/tree/master/web/static/js
+
+https://github.com/jabberfest/demo_app/tree/master/web/static/css
+
 
 
 
