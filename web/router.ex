@@ -32,16 +32,15 @@ defmodule Demo.Router do
     resources "/channels", ChannelController, only: [:index, :create, :show] do
       resources "/channel_messages", ChannelMessageController, only: [:index, :create, :show]
     end
-    
   end
 
   scope "/auth", Demo do
     pipe_through [:browser]
 
+    get "/logout", AuthController, :delete
     get "/:provider", AuthController, :request
     get "/:provider/callback", AuthController, :callback
     post "/:provider/callback", AuthController, :callback
-    delete "/logout", AuthController, :delete  
   end
 
   # Other scopes may use custom stacks.

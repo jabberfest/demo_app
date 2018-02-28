@@ -70,6 +70,10 @@
        return '/api/channels/' + channel_id + '/channel_messages';
      }, 
      
+     authDelete: function authDelete() {
+       return '/auth/logout';
+     }, 
+     
      authRequest: function authRequest(provider) {
        return '/auth/' + provider;
      }, 
@@ -80,10 +84,6 @@
      
      authCallback: function authCallback(provider) {
        return '/auth/' + provider + '/callback';
-     }, 
-     
-     authDelete: function authDelete() {
-       return '/auth/logout';
      }, 
    }
  });

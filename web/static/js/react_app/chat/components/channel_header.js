@@ -19,10 +19,9 @@ const ChannelHeader = ({onAddChannelClick}) => (
                 className="col-4 add-channel" 
                 onClick = {onAddChannelClick}
             >
-                <span>+</span>
+                <span>＋</span>
             </div>
         </div>
-
     </div>
 )
 

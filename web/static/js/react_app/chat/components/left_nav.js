@@ -47,6 +47,13 @@ class LeftNav extends React.Component{
 
         return (
             <div className="left-container container-fluid ">
+                <div className="row">
+                    <div className="container-fluid log-out">
+                        <a href="/auth/logout">Log Out</a>
+                    </div>
+                </div>
+
+
                 <div className="current-user-container">
                     <div className="avatar">
                         <img height="50" width="50"  src={""+currentUser.avatar}/>

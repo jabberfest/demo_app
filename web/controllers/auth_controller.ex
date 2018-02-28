@@ -14,7 +14,7 @@ defmodule Demo.AuthController do
     def delete(conn, _params) do
       conn
       |> put_flash(:info, "You have been logged out!")
-      |> configure_session(drop: true)
+      |> Demo.Guardian.Plug.sign_out()
       |> redirect(to: "/")
     end
   
@@ -30,7 +30,6 @@ defmodule Demo.AuthController do
         {:ok, user} ->
           conn
           |> put_flash(:info, "Successfully authenticated.")
-          #|> put_session(:current_user, user)
           |> Demo.Guardian.Plug.sign_in(user)
           |> redirect(to: "/")
         {:error, reason} ->
