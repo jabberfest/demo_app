@@ -6,7 +6,6 @@ import { isNil } from 'lodash';
 
 import { getActiveChannelId, getFetchedChannels } from '../reducers/index';
 
-
 export const createChannelMessage = (text) => (dispatch, getState) => {
     const channelId = getActiveChannelId(getState())
 
@@ -17,7 +16,7 @@ export const createChannelMessage = (text) => (dispatch, getState) => {
     /**
      * @todo Refactor into utility method in api
      */
-    api.fetch(routes.channelChannelMessageCreate(channelId),{
+    return api.fetch(routes.channelChannelMessageCreate(channelId),{
         method: 'post',
         body: JSON.stringify(data)
     }).then(api.handleErrors).then(response =>{
