@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { isNil, isUndefined, isArray, values } from 'lodash';
 
 // Reducers
-const channelMessagesByChannelById = (state= {}, action) => {
+export const channelMessagesByChannelById = (state= {}, action) => {
     
     const addChannels = (state, action, opts={reset:false}) => {
         let newState = {...state};
@@ -13,7 +13,7 @@ const channelMessagesByChannelById = (state= {}, action) => {
         }
 
         // If channel not already added, add it
-        if (_.isUndefined(newState[channelId])){  
+        if (isUndefined(newState[channelId])){  
             newState[channelId] = channelMessages;
         } else{
             if(opts.reset){
@@ -37,7 +37,7 @@ const channelMessagesByChannelById = (state= {}, action) => {
     }
 }
 
-const channelMessagesByChannelId = (state= {}, action) => {
+export const channelMessagesByChannelId = (state= {}, action) => {
 
     const addChannels = (state, action, opts={reset:false}) => {
         let newState = {...state};
@@ -45,11 +45,10 @@ const channelMessagesByChannelId = (state= {}, action) => {
 
         let channelMessageId = action.response.channelMessage.result
         //If normalize returns 1 result or an array of results
-        channelMessageId = _.isArray(channelMessageId) ? channelMessageId : [channelMessageId]
-
+        channelMessageId = isArray(channelMessageId) ? channelMessageId : [channelMessageId]
 
         // If channel not already added, add it
-        if (_.isUndefined(newState[channelId])){  
+        if (isUndefined(newState[channelId])){  
             newState[channelId] = [...channelMessageId];
         } else{
             if(opts.reset){
@@ -84,7 +83,7 @@ export default channelMessages;
 // Accessor helper functions
 export const getChannelMessages = (state, channelId) => {
     const ids = state.channelMessagesByChannelId[channelId]
-    return !_.isUndefined(ids) ? ids.map(id => getChannelMessage(state, channelId, id)) : []
+    return !isUndefined(ids) ? ids.map(id => getChannelMessage(state, channelId, id)) : []
 }
 
 export const getChannelMessage = (state, channelId, id) => {
