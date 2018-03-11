@@ -8,8 +8,6 @@ import * as routes from 'js/phoenix-jsroutes';
 const middlewares = [thunk]
 const mockStore = configureStore(middlewares)
 
-debugger;
-
 
 describe('async channel message actions', () => {
 
