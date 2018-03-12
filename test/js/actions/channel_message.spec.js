@@ -56,8 +56,6 @@ describe('async channel message actions', () => {
 
       const store  = mockStore({channels:{activeChannel: channelId}})
 
-      debugger;
-
       return store.dispatch(actions.createChannelMessage("foo")).then(()=>{
         expect(store.getActions()).toEqual(expectedActions)
       })
